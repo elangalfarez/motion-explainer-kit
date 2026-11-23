@@ -1,0 +1,11 @@
+lemo-opuscar https://github.com/lemomo-ai/lemo-opuscar
+motionmaxxing https://github.com/Tejashmakwana/motionmaxxing
+ClaudeAnimationBase https://github.com/JohnHeibel/ClaudeAnimationBase
+genjutsu https://github.com/AThevon/genjutsu
+hyperframes https://github.com/heygen-com/hyperframes
+motion-design-skill https://github.com/lottiefiles/motion-design-skill
+bang-motion https://github.com/bangtutorial/bang-motion
+animate https://github.com/cth9191/animate
+humanizer https://github.com/blader/humanizer
+no-slop https://github.com/elangalfarez/no-slop
+taste-skill https://github.com/leonxlnx/taste-skill

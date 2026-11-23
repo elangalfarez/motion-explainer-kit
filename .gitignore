@@ -1,0 +1,9 @@
+refs/
+reels/.active
+reels/.waiting
+reels/.gate_blocks
+**/_page.html
+**/video_only.mp4
+**/clip.mp4
+**/takes/
+__pycache__/

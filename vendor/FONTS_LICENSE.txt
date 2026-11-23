@@ -1,0 +1,1 @@
+Fonts: Outfit (Rodrigo Fuenzalida) and Shippori Mincho B1 (FONTDASU) are licensed under the SIL Open Font License 1.1 (https://openfontlicense.org). Three.js: MIT, see THREE_LICENSE.

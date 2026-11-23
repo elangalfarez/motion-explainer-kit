@@ -1,0 +1,26 @@
+{
+ "slug": "tikus_hanoi",
+ "title": "Prancis bayar warga Hanoi buat bunuh tikus",
+ "lang": "id",
+ "passages": [
+  "Tahun {1902,|sembilan belas nol dua,} Prancis bayar warga Hanoi buat bunuh tikus.",
+  "Hasilnya? Tikusnya malah makin banyak.",
+  "Awalnya, Prancis bangun selokan modern di bawah kota.",
+  "Ternyata itu surga buat tikus. Mereka naik lewat saluran, masuk ke rumah orang-orang kaya.",
+  "Jadi pemerintah sewa pemburu tikus. Sehari bisa lebih dari {20.000|dua puluh ribu} ekor.",
+  "Tapi tikusnya {ga|nggak} abis-abis. Akhirnya muncul plan B:",
+  "siapa aja yang setor ekor tikus, dibayar satu sen.",
+  "Ekor numpuk. Pejabatnya seneng banget.",
+  "Sampai warga lihat tikus lari-lari... tanpa ekor.",
+  "Ternyata ekornya dipotong, tikusnya dilepas lagi. Biar beranak, biar ekornya nambah.",
+  "Di pinggir kota, petugas malah nemu peternakan tikus.",
+  "Programnya distop. Tikusnya? Tetep di situ.",
+  "Pelajarannya: kalau {lu|lo} bayar buktinya, orang bakal produksi buktinya."
+ ],
+ "voice": {"engine": "eleven", "voice": "will", "model": "eleven_v4"},
+ "sources": [
+  "https://en.wikipedia.org/wiki/Great_Hanoi_Rat_Massacre",
+  "https://www.atlasobscura.com/articles/hanoi-rat-massacre-1902 (M. Vann: 20,112 rats on 21 Jun 1902; 1 cent per tail; tailless rats; rat farms on outskirts; bounty scrapped)",
+  "https://saigoneer.com/hanoi-heritage/23265-author-michael-vann-on-hanoi-s-infamous-colonial-rat-hunt"
+ ]
+}

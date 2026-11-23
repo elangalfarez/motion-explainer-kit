@@ -1,0 +1,28 @@
+{
+ "slug": "ando_ramen",
+ "title": "Bangkrut di umur 47, lalu bikin mie instan pertama di dunia",
+ "lang": "id",
+ "passages": [
+  "Umur {47,|empat puluh tujuh,} dia kehilangan semuanya. Bangkrut. Pernah dipenjara.",
+  "Tapi orang inilah yang bikin mie instan yang lo makan semalam.",
+  "Namanya Momofuku Ando. Yatim piatu sejak bayi.",
+  "Tahun {1948,|sembilan belas empat puluh delapan,} dia dipenjara dua tahun karena kasus pajak.",
+  "Bebas, dia jadi direktur koperasi kredit. Koperasinya bangkrut. Hartanya habis. Sisa satu rumah sewaan.",
+  "Tapi dia ingat satu pemandangan. Habis perang, orang antre di tengah dingin, cuma buat semangkuk ramen.",
+  "Jadi dia bikin gubuk di halaman belakang. Setahun penuh. Nggak pernah libur. Tidur cuma empat jam.",
+  "Sampai suatu hari, dia lihat istrinya goreng tempura.",
+  "Mie digoreng kilat. Airnya keluar, mienya awet. Tinggal seduh air panas.",
+  "Tahun {1958,|sembilan belas lima puluh delapan,} lahirlah mie instan pertama di dunia. Umurnya {48.|empat puluh delapan.}",
+  "Sekarang dunia makan {123 miliar|seratus dua puluh tiga miliar} porsi setahun. Indonesia nomor dua.",
+  "Dia mulai dari nol di umur {47.|empat puluh tujuh.} Lo masih ngerasa telat?"
+ ],
+ "voice": {"engine": "eleven", "voice": "will", "model": "eleven_v4"},
+ "sources": [
+  "https://www.nissin.com/en_jp/about/founder/ (black-market ramen queue near Osaka Station in the cold; 1957 credit union bankrupt, lost all property except rented house in Ikeda; backyard shed, one year non-stop, no day off, ~4h sleep/night)",
+  "https://www.latimes.com/archives/la-xpm-2007-jan-07-me-ando7-story.html (born 1910 Taiwan, parents died when infant; 1948 arrested+convicted tax evasion (scholarships), 2 years in jail; 48 when he invented the noodles; died 2007 aged 96)",
+  "https://www.gov-online.go.jp/hlj/en/november_2024/november_2024-05.html (age 47 decided; wife deep-frying tempura -> flash-frying; storage up to 6 months; Aug 1958 Chicken Ramen)",
+  "https://www.cupnoodles-museum.jp/en/osaka_ikeda/about/ (1958 world's first instant noodles, Chicken Ramen)",
+  "https://kyodonewsprwire.jp/release/202505028328 (WINA: 2024 global demand 123.07 billion servings; Indonesia #2 with 14.68 billion)",
+  "https://www.nissin.com/jp/about/history/topics/187 (35 yen when udon was 6 yen) [unused]"
+ ]
+}

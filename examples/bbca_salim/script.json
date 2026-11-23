@@ -1,0 +1,38 @@
+{
+ "slug": "bbca_salim",
+ "title": "Bank ini pernah diambil alih negara. Sekarang semua orang rebutan.",
+ "lang": "id",
+ "passages": [
+  "Bank ini pernah diambil alih negara. Sekarang, semua orang rebutan pengen punya.",
+  "BCA. Milik Liem Sioe Liong, sahabat dekat Soeharto.",
+  "Mei {1998.|sembilan belas sembilan puluh delapan.} Soeharto jatuh. Rumah Liem dibakar massa. Ratusan cabang BCA dirusak.",
+  "Nasabah panik. Sekitar {16 triliun|enam belas triliun} ditarik dalam hitungan minggu.",
+  "BI nyuntik hampir {32 triliun.|tiga puluh dua triliun.} Tetap nggak cukup.",
+  "{28|Dua puluh delapan} Mei, negara ambil alih. Keluarga Salim kehilangan banknya.",
+  "{2002,|Dua ribu dua,} {51 persen|lima puluh satu persen} dilelang. Standard Chartered nawar lebih tinggi.",
+  "Tapi yang menang Farallon, bareng Djarum, raja kretek. Harganya cuma {5,3 triliun.|lima koma tiga triliun.}",
+  "Keluarga Hartono jadi pengendali, dan orang terkaya di Indonesia.",
+  "BCA jadi emiten terbesar di bursa. Nilainya hampir {700 triliun.|tujuh ratus triliun.}",
+  "Tahun lalu, ada yang teriak: ambil lagi! Danantara jawab: nggak ada rencana.",
+  "Keluarga Salim? Sisa sekitar satu persen.",
+  "Satu krisis bisa ngambil semuanya. Atau ngasih semuanya. Tergantung lo di sisi mana?"
+ ],
+ "voice": {
+  "engine": "eleven",
+  "voice": "will",
+  "model": "eleven_v4"
+ },
+ "sources": [
+  "https://us.cnn.com/ASIANOW/asiaweek/98/0612/biz3.html (Liem close associate of Suharto, owned 69.46%; rioters torched Liem's Jakarta mansion, damaged 122 BCA branches, 150 ATMs; local bankers estimate up to Rp16T withdrawn since May 18; IBRA took over management May 28)",
+  "https://www.nytimes.com/1998/05/29/world/jakarta-takes-over-big-bank-after-run.html (govt took control after run)",
+  "https://katadata.co.id/finansial/bursa/68a63f2194c43/... (BLBI to BCA Rp31.99T per Kwik Kian Gie)",
+  "https://www.bca.co.id/en/tentang-bca/korporasi/Sejarah-BCA (1998 BTO under IBRA; 1999 govt 92.8%)",
+  "https://www.euromoney.com/article/27bjsstsqxhkmh19emn66/farallon-nips-deal-from-standard-chartered/ (StanChart ~Rp1,800/share vs Farallon Rp1,775; minister said StanChart highest bid)",
+  "https://www.upi.com/Business_News/2002/03/14/BCA-goes-to-Farallon/30091016135800/ (Farindo with Djarum's Alaerka)",
+  "https://www.liputan6.com/news/read/30717/farindo-memenangkan-tender-saham-bca (Rp1,775/share, total ~Rp5.3T)",
+  "https://www.forbes.com/profile/hartono/ (Hartonos No.1 richest Indonesia >decade; fortune from BCA)",
+  "https://stockanalysis.com/quote/idx/BBCA/market-cap/ (675.63T on 2026-11-17; largest in Indonesia) + fortuneidn 18 Nov 2026 (692T)",
+  "https://www.konteks.co.id/ekonomi/1631520896/... + CNBC Indonesia 2025-08-20 (Aug 2025 calls to take back 51%; BCA denied; Danantara CEO Rosan: 'Tidak ada rencana itu')",
+  "https://pemiliksaham.com/issuers/BBCA (Anthoni Salim 1.15% as of 31 Mar 2026)"
+ ]
+}

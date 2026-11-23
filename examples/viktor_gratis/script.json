@@ -1,0 +1,29 @@
+{
+ "slug": "example_viktor_gratis",
+ "title": "Agent AI terbaik itu yang gratis",
+ "lang": "id",
+ "passages": [
+  "Agent AI terbaik itu yang gratis.",
+  "Dan bukan Hermes. Hermes udah {ga|nggak} zaman.",
+  "{Gw|Gue} baru aja keterima Claude for Startups, dan salah satu perk-nya: Viktor.",
+  "Viktor itu AI agent kayak Hermes, tapi jauh lebih powerful.",
+  "{Lu|Lo} bisa pake frontier model kayak Claude Opus sama {GPT|G P T} Sol.",
+  "Dan semuanya gratis. {Gw|Gue} dapet kredit {$1.500.|seribu lima ratus dolar.}",
+  "Kalau {gw|gue} pake maksimal, dapet {$1.500|seribu lima ratus} lagi. Total {$3.000.|tiga ribu dolar.}",
+  "Atau... bansos senilai {Rp54|lima puluh empat} juta.",
+  "Bisa buat apa aja. Kemarin {gw|gue} suruh dia scraping backlink kompetitor,",
+  "terus reverse engineer strategi {SEO|S E O} off-page mereka.",
+  "Even video ini {gw|gue} buat pake Viktor."
+ ],
+ "voice": {
+  "voice": "Will",
+  "model": "eleven_v3"
+ },
+ "sources": [
+  "https://hermes-agent.nousresearch.com/ (free, MIT; models paid separately)",
+  "https://openai.com/index/gpt-5-6/ (GPT-5.6 Sol, GA 2026-10-07)",
+  "https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=IDR (~Rp17,900 on 2026-10-14 -> $3,000 = Rp53.7jt)",
+  "Credits $1,500 + $1,500: elang's own perk"
+ ],
+ "whisper_prompt": "Hermes, Claude for Startups, Viktor, Claude Opus, GPT Sol, bansos, scraping backlink, reverse engineer, SEO off-page"
+}
