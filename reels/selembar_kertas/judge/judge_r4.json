@@ -1,0 +1,79 @@
+{
+ "scores": {
+  "hook_2s": 7,
+  "story_twist": 8,
+  "truth_labels": 7,
+  "motion_craft": 7,
+  "camera_one_take": 8,
+  "every_2s_new": 7,
+  "readability": 6,
+  "style_consistency": 8,
+  "audio_mix": 7,
+  "ending": 8
+ },
+ "average": 7.3,
+ "evidence": {
+  "hook_2s": ["judge/t000.00.png", "judge/strips/hook.png", "judge/t002.00.png"],
+  "story_twist": ["judge/sheet.png", "judge/t026.00.png", "judge/t034.00.png", "judge/t042.00.png", "judge/t050.00.png", "judge/t054.00.png", "judge/t055.82.png"],
+  "truth_labels": ["judge/t024.00.png", "judge/t034.00.png", "judge/t036.00.png", "judge/t050.00.png", "judge/strips/slam_732.png"],
+  "motion_craft": ["judge/strips/stamp_MA.png", "judge/strips/whip_2023.png", "judge/strips/slam_732.png", "judge/t018.00.png", "judge/t026.00.png", "judge/t036.00.png", "judge/t038.00.png"],
+  "camera_one_take": ["judge/strips/turn_12nov.png", "judge/strips/whip_2023.png", "judge/t018.00.png", "judge/t052.00.png"],
+  "every_2s_new": ["judge/sheet.png", "judge/t036.00.png", "judge/t038.00.png", "judge/t030.00.png", "judge/t032.00.png", "judge/t034.00.png"],
+  "readability": ["judge/phone_sheet.png", "judge/t002.00.png", "judge/t014.00.png", "judge/t016.00.png", "judge/t018.00.png", "judge/t032.00.png", "judge/t042.00.png", "judge/strips/turn_12nov.png", "judge/strips/slam_732.png"],
+  "style_consistency": ["judge/sheet.png", "judge/t004.00.png", "judge/t036.00.png", "judge/t050.00.png"],
+  "audio_mix": [],
+  "ending": ["judge/t054.00.png", "judge/t055.82.png", "judge/strips/end.png"]
+ },
+ "fixes": {
+  "hook_2s": "0.0-0.3 s: frame 0 is a static frontal wide of the chair, and the WAPRES chip only pops in at about 0.07 s as a grey ghost (hook.png frames 1-3). Start with the chip already on him and catch him mid-rise out of the orange chair, with a push-in under way, so frame 1 carries both the claim and an action. The caption pill 'Wapres Indonesia' repeats the headline; let the headline carry it.",
+  "story_twist": "25-27 s: the advokat has no ADVOKAT chip (t026), so 'seorang advokat menggugat kertas itu' is just an unnamed man holding a paper. Chip him and have him point at the same SURAT sheet. Then at 52-55 s put 732 next to a shrunken 96.214.691 so the closing comparison is on screen and not only in the caption.",
+  "truth_labels": "The single global '● ILUSTRASI' chip sits over every frame, including the real KPU total 96.214.691 (t026, t050) and the real 30 OKT / 12 NOV dates, so it labels real data as illustration. Put ILUSTRASI only on the drawn mocks (surat, ballot box, seats) and give the real figures a small source tag (e.g. 'KPU 2024'). Also, at 24 s the counter freezes mid-roll on 66.257.343 under the real label 'SUARA PRABOWO-GIBRAN 2024'; roll it faster or hide the label until the number settles. The same applies to 101 at 36 s.",
+  "motion_craft": "18 s and 26 s: headlines leave as semi-transparent grey ghosts ('DI BAWAH 40' at t018, '96.214.691' at t026), which reads as a linear fade. Snap them out over 3-4 frames with a scale pop like the 2023 arrival in whip_2023.png. At 36-38 s the DPR crowd is a rigid grid; ripple the hand-raise across it on twos.",
+  "camera_one_take": "16-19 s: 'DI BAWAH 40' is already fading (t018) while the side sign 'ATAU PERNAH DIPILIH RAKYAT' is still arriving. Hold the headline until the sign has settled, then whip. turn_12nov.png shows the continuity working; make the MK to ballot-box move (22-24 s) show the same road.",
+  "every_2s_new": "36-38 s: t036 and t038 are the same dome plus icon grid, and only the counter changes (101 to 120). Swing the HMP door open or move the camera through the door between them. 30-34 s (three frames of Hakim MA left plus document right) could also lose a beat.",
+  "readability": "14-19 s: the barrier arm cuts across the '● ILUSTRASI' chip (t014, t018) and through the 'MIN. 40 TAHUN' chip (t016, t018). Pivot the arm left of both or move the chips. In the same pass, raise every chip under ~56 px to at least 56: 'PERTAMA SEJAK 1956' (0 s), 'ATAU PERNAH DIPILIH RAKYAT' (18 s), 'RINGKASAN PUTUSAN MA 742 K/TUN/2026' (32-34 s), 'SURAT MUNDUR' (42-44 s), 'SINGAPURA'/'SYDNEY' (10 s).",
+  "style_consistency": "36-38 s: the DPR crowd is a flat repeated icon grid floating against the wall (and over the door frame at t038), unlike the rubber-hose cast everywhere else. Replace it with small cast figures standing on the ground. Also fix the vertical tone seam down Hatta's face at 4 s (t004).",
+  "audio_mix": "No human has listened. One phone-speaker listen is needed before this can go above 7, focused on the MA stamp at about 30 s (the loudest hit, under 'membatalkannya') and the 0.4 s tail before the cut.",
+  "ending": "54-55.8 s: the last frame lands the line, but the closeup turns the 732 seats into abstract orange slabs and no frame shows the number 732 large (slam_732.png stops at 478, and t054 has no counter). Keep '732' on screen above LO through the cut, and frame wide enough that the slabs read as seats."
+ },
+ "similar_pairs": [
+  "t036.00 / t038.00: same dome, same icon-grid crowd, same orange door; only the counter (101 to 120) and the HMP chip differ",
+  "t030.00 / t032.00 / t034.00: same staging (Hakim MA bottom left, surat right, grey columns); new elements (stamp, summary box) are added but the composition holds for 6 s",
+  "t052.00 / t054.00: same overhead of the seat ring, chair and table; seats change colour and LO appears small at the fence",
+  "t020.00 / t022.00: same column backdrop and the same blue-suit figure center-left; headline and chip text change",
+  "t016.00 / t018.00: same barrier and columns; the side sign and the two figures are added"
+ ],
+ "readability_issues": [
+  "Sizes are estimated by eye from 1080x1920 frames, not pixel-measured.",
+  "t000.00: 'PERTAMA SEJAK 1956' ~48 px, under 56",
+  "t002.00: 'TERAKHIR:' clipped at the left edge mid slide-in, with the T cut off",
+  "t004.00 onward: '● ILUSTRASI' chip ~36 px (a label, acceptable, but small)",
+  "t006.00/t008.00/t010.00/t028.00-t034.00: 'No. 9149/D.D1/KS/2019' ~20-28 px (prop detail, unreadable on a phone)",
+  "t010.00: 'SINGAPURA' and 'SYDNEY' chips ~48 px",
+  "t014.00, t018.00, t020.00: barrier arm crosses the ILUSTRASI chip",
+  "t016.00, t018.00: barrier arm passes through 'MIN. 40 TAHUN' (~48 px)",
+  "t018.00: 'ATAU PERNAH DIPILIH RAKYAT' ~42 px; 'DI BAWAH 40' ghosted grey, low contrast against the columns",
+  "t024.00: a flying ballot paper overlaps '2024' in 'SUARA PRABOWO-GIBRAN 2024'",
+  "t026.00: '96.214.691' and its sub-label ghosted grey, low contrast",
+  "t028.00: '30OKT' has no space mid-reveal",
+  "t032.00: summary box shows only the ~38 px header 'RINGKASAN PUTUSAN MA 742 K/TUN/2026' over an empty body, which reads as a broken card",
+  "t034.00: same ~38 px header",
+  "t042.00: 'SURAT MUNDUR' chip (~46 px) overlaps the WAPRES figure's foot; turn_12nov.png last frame shows the chip crossing his torso while the WAPRES chip ghosts in",
+  "t044.00: headline shows only 'TANPA' (ALASAN missing in this sample)",
+  "slam_732.png: 'ANGGOTA MPR' sub-label sits on the fence rail, low contrast"
+ ],
+ "other_issues": [
+  "t000.00 / hook.png: WAPRES chip missing on frame 0; the figure exits left by about 0.2 s",
+  "t004.00: Hatta's face has a vertical tone seam (lighter left half, darker right) that looks like a render error",
+  "t016.00: disembodied hand or magnifier shape floating at the right edge (x~1030, y~1465)",
+  "t024.00, t026.00: stray cropped wall slab with a black outline along the right edge",
+  "t026.00: advokat unlabeled (no ADVOKAT chip)",
+  "t036.00/t038.00: crowd grid floats on the wall face, not the ground, and overlaps the door frame at t038",
+  "t046.00: the candidate figure has no office chip; the 'one hand from the MPR table points' beat is not visible",
+  "t054.00/t055.82: the 732 counter never reaches 732 in any sampled frame (slam_732 ends at 478, t054 has no counter)",
+  "t052.00/t054.00: tree tops cropped by the top edge (minor)",
+  "0 s scroll-stop: partly. The claim 'WAPRES MUNDUR / PERTAMA SEJAK 1956' is huge and readable on frame 1 and is a strong news hook, but the image is a static frontal wide of a chair with a small unlabeled figure, and there is no number slam or action on frame 1",
+  "Last frames: yes, t055.82 lands 'Lo nggak termasuk.' with LO behind the fence and the caption complete; end.png shows a clean hold with no cut-off word visible"
+ ],
+ "verdict": "A real, connected story, sourced and dated, told in one continuous cel-shaded world. The 12 NOV whip back to the chair (turn_12nov.png), the stamp hit (stamp_MA.png) and the 96 juta to 732 descent show real craft, and t055.82 lands 'Lo nggak termasuk.' cleanly. It is not yet at the house bar. Readability is the weakest criterion: the barrier arm cuts through the ILUSTRASI and MIN. 40 chips at 14-19 s, several chips sit around 38-48 px, and headlines exit as grey ghosts (t018, t026). Truth labelling is muddied by one global ILUSTRASI chip over real KPU figures, and a mid-roll 66.257.343 sits under a real label. The 36-38 s crowd is a flat icon grid that breaks the style and repeats across two samples. The closing number 732 is never shown large. Hook and audio are unproven beyond 7: frame 0 is static, and no human has listened. Average 7.3, below the gate of 8; fix readability first, then truth labels, then the 36-38 s crowd."
+}

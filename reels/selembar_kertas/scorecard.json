@@ -1,0 +1,44 @@
+{
+ "rounds": 4,
+ "scores": {
+  "hook_2s": 7,
+  "story_twist": 8,
+  "truth_labels": 7,
+  "motion_craft": 7,
+  "camera_one_take": 8,
+  "every_2s_new": 7,
+  "readability": 6,
+  "style_consistency": 8,
+  "audio_mix": 7,
+  "ending": 8
+ },
+ "average": 7.3,
+ "judge": "fresh sub-agent each round, images only (frames every 2 s cut from final.mp4, frame-exact strips, phone-size sheet); no source code",
+ "history": {
+  "r1": 5.9,
+  "r2": 7.0,
+  "r3": 7.5,
+  "r4": 7.3
+ },
+ "evidence": [
+  "judge/t000.00.png",
+  "judge/t010.00.png",
+  "judge/t030.00.png",
+  "judge/t034.00.png",
+  "judge/t040.00.png",
+  "judge/t054.00.png",
+  "judge/t055.82.png",
+  "judge/sheet.png",
+  "judge/phone_sheet.png",
+  "judge/strips/stamp_MA.png",
+  "judge/strips/turn_12nov.png"
+ ],
+ "round_log": [
+  "r1 5.9: ending 4 (TTS clipped the last word in all 3 takes) -> last line generated alone and spliced into the pause; readability 5 (captions over art, 1.02:1 contrast) -> captions on a paper pill; motion 6 (2-sample blur read as double outlines) -> single-sample frames, characters drawn once on top; every_2s_new 5 -> new beats at daftar, hak, nggak, continuous ballots; caption drift 0.46 s at 'pintu/di' -> aligner splits glued words and snaps to onsets after pauses (0.05 s)",
+  "r2 7.0: motion/readability 6 (ghosted and clipped headline swaps) -> one headline slot, each leaves before the next arrives, arrivals from 1.7x; every_2s_new 6 -> HATTA role figure, MA card built in three steps, letters on the table, PENGGANTINYA? beat; table base flicker -> cloth reaches the floor",
+  "r3 7.5: every_2s_new 6 (42-48 s four similar chair frames) -> close-up on the seat, orbit to the table, back to nominees; camera drops to the hall at 'Penggantinya'; hook gets 'PERTAMA SEJAK 1956' and a moving VP; LO in white against the orange seats",
+  "r4 7.3: readability 6 (barrier arm crosses chips, several chips 38-48 px), truth_labels 7 (one global ILUSTRASI tag over real figures), 732 never shown at full count -> NOT FIXED: plateau rule fired (r2-r4 within +/-0.5), reported to the human with options"
+ ],
+ "gaps": "Gate not passed: average 7.3 < 8 and readability 6 < 7. Open items from the r4 judge: barrier arm crossing the ILUSTRASI and MIN. 40 TAHUN chips at 14-20 s; chips under 56 px (PERTAMA SEJAK 1956, SINGAPURA/SYDNEY, ATAU PERNAH DIPILIH RAKYAT, RINGKASAN header, SURAT MUNDUR); 732 counter clears before reaching the ending; the 120 crowd is a flat icon grid; characters act little (hook and ending strips near-static); stray wall slab at the frame edge 24-26 s. The audio mix has never been listened to by a human.",
+ "film": "final.mp4"
+}

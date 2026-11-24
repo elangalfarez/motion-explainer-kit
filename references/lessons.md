@@ -31,3 +31,16 @@
 ## Paper one-take
 - Keep in-world seals ≤1.6 units wide and let `seal()` auto-size (explicit size overflowed long words).
 - Never put a station behind a backdrop band; far "sky" objects with fog off are visible from everywhere, gate them by time.
+
+## Voice / alignment (selembar_kertas, 2026-11-24)
+- ElevenLabs eleven_v3 cut the last word off all 3 takes of a ~900-character script ("termasuk" still at -23 dB on the
+  last sample). Check every take's tail energy before aligning. Fix: generate the last line alone (it ended in clean
+  silence) and splice it into the pause before that line.
+- Whisper writes some numbers as digits and glues words ("Bukapintu"), which threw captions 0.46 s off. voice.py now
+  matches each spoken word against its display form too, splits glued words, and snaps starts to onsets after real
+  pauses. Settle a disputed word time from the energy envelope, not from a second Whisper pass.
+
+## Toon-3D hybrid (C&H rig inside a cel-shaded Three.js world)
+- A 2-sample motion blur reads as double outlines on ink lines; render single samples and draw the 2D characters once,
+  on top of the world, at the frame time. A camera inside a prop's ink hull renders solid black: keep trees and props
+  off the camera path (a ring diorama with the stage at the centre lets one take revisit the start).
