@@ -1,13 +1,13 @@
 {
- "max_abs_drift": 0.051,
+ "max_abs_drift": 0.1,
  "worst": {
-  "w": "pintu:",
-  "caption": 14.0,
-  "audio": 13.949,
-  "drift": -0.051
+  "w": "asal",
+  "caption": 16.69,
+  "audio": 16.59,
+  "drift": -0.1
  },
- "last_word_present": false,
- "film_duration": 55.567,
+ "last_word_present": true,
+ "film_duration": 56.0,
  "rows": [
   {
    "w": "Wapres",
@@ -47,15 +47,15 @@
   },
   {
    "w": "Ceritanya",
-   "caption": 4.61,
-   "audio": 4.61,
+   "caption": 4.62,
+   "audio": 4.62,
    "drift": 0.0
   },
   {
    "w": "mulai",
-   "caption": 4.98,
+   "caption": 5.0,
    "audio": 5.0,
-   "drift": 0.02
+   "drift": 0.0
   },
   {
    "w": "dari",
@@ -71,15 +71,15 @@
   },
   {
    "w": "kertas.",
-   "caption": 5.84,
-   "audio": 5.84,
+   "caption": 5.86,
+   "audio": 5.86,
    "drift": 0.0
   },
   {
    "w": "Surat",
-   "caption": 6.71,
-   "audio": 6.68,
-   "drift": -0.03
+   "caption": 6.72,
+   "audio": 6.72,
+   "drift": 0.0
   },
   {
    "w": "penyetaraan",
@@ -89,32 +89,32 @@
   },
   {
    "w": "ijazah:",
-   "caption": 7.52,
-   "audio": 7.52,
+   "caption": 7.54,
+   "audio": 7.54,
    "drift": 0.0
   },
   {
    "w": "sekolah",
-   "caption": 8.36,
-   "audio": 8.36,
+   "caption": 8.37,
+   "audio": 8.37,
    "drift": 0.0
   },
   {
    "w": "Gibran",
-   "caption": 8.72,
-   "audio": 8.72,
+   "caption": 8.74,
+   "audio": 8.74,
    "drift": 0.0
   },
   {
    "w": "di",
-   "caption": 9.06,
-   "audio": 9.06,
+   "caption": 9.08,
+   "audio": 9.08,
    "drift": 0.0
   },
   {
    "w": "luar",
-   "caption": 9.18,
-   "audio": 9.18,
+   "caption": 9.2,
+   "audio": 9.2,
    "drift": 0.0
   },
   {
@@ -125,14 +125,14 @@
   },
   {
    "w": "dianggap",
-   "caption": 9.7,
+   "caption": 9.72,
    "audio": 9.72,
-   "drift": 0.02
+   "drift": 0.0
   },
   {
    "w": "setara",
-   "caption": 10.1,
-   "audio": 10.1,
+   "caption": 10.12,
+   "audio": 10.12,
    "drift": 0.0
   },
   {
@@ -143,14 +143,14 @@
   },
   {
    "w": "2023,",
-   "caption": 11.58,
-   "audio": 11.58,
+   "caption": 11.59,
+   "audio": 11.59,
    "drift": 0.0
   },
   {
    "w": "MK",
-   "caption": 13.2,
-   "audio": 13.2,
+   "caption": 13.22,
+   "audio": 13.22,
    "drift": 0.0
   },
   {
@@ -161,98 +161,98 @@
   },
   {
    "w": "pintu:",
-   "caption": 14.0,
-   "audio": 13.949,
-   "drift": -0.051
+   "caption": 14.02,
+   "audio": 14.02,
+   "drift": 0.0
   },
   {
    "w": "di",
-   "caption": 14.81,
-   "audio": 14.81,
+   "caption": 14.83,
+   "audio": 14.83,
    "drift": 0.0
   },
   {
    "w": "bawah",
-   "caption": 14.88,
+   "caption": 14.9,
    "audio": 14.9,
-   "drift": 0.02
+   "drift": 0.0
   },
   {
    "w": "40",
-   "caption": 15.14,
-   "audio": 15.14,
+   "caption": 15.16,
+   "audio": 15.16,
    "drift": 0.0
   },
   {
    "w": "boleh",
    "caption": 15.52,
-   "audio": 15.5,
-   "drift": -0.02
+   "audio": 15.54,
+   "drift": 0.02
   },
   {
    "w": "nyalon,",
-   "caption": 15.82,
-   "audio": 15.82,
+   "caption": 15.84,
+   "audio": 15.84,
    "drift": 0.0
   },
   {
    "w": "asal",
-   "caption": 16.67,
-   "audio": 16.66,
-   "drift": -0.01
+   "caption": 16.69,
+   "audio": 16.59,
+   "drift": -0.1
   },
   {
    "w": "pernah",
-   "caption": 16.96,
-   "audio": 16.96,
+   "caption": 16.98,
+   "audio": 16.98,
    "drift": 0.0
   },
   {
    "w": "dipilih",
-   "caption": 17.2,
-   "audio": 17.2,
+   "caption": 17.22,
+   "audio": 17.22,
    "drift": 0.0
   },
   {
    "w": "rakyat.",
-   "caption": 17.56,
-   "audio": 17.56,
+   "caption": 17.58,
+   "audio": 17.58,
    "drift": 0.0
   },
   {
    "w": "Sembilan",
-   "caption": 18.2,
-   "audio": 18.19,
+   "caption": 18.22,
+   "audio": 18.21,
    "drift": -0.01
   },
   {
    "w": "hari",
-   "caption": 18.46,
-   "audio": 18.46,
+   "caption": 18.48,
+   "audio": 18.48,
    "drift": 0.0
   },
   {
    "w": "kemudian,",
-   "caption": 18.68,
-   "audio": 18.68,
+   "caption": 18.7,
+   "audio": 18.7,
    "drift": 0.0
   },
   {
    "w": "Wali",
-   "caption": 19.57,
-   "audio": 19.57,
+   "caption": 19.61,
+   "audio": 19.61,
    "drift": 0.0
   },
   {
    "w": "Kota",
-   "caption": 19.78,
-   "audio": 19.78,
+   "caption": 19.8,
+   "audio": 19.8,
    "drift": 0.0
   },
   {
    "w": "Solo",
-   "caption": 20.02,
-   "audio": 20.02,
+   "caption": 20.04,
+   "audio": 20.04,
    "drift": 0.0
   },
   {
@@ -263,44 +263,44 @@
   },
   {
    "w": "36",
-   "caption": 20.7,
+   "caption": 20.72,
    "audio": 20.7,
-   "drift": 0.0
+   "drift": -0.02
   },
   {
    "w": "daftar",
    "caption": 21.04,
-   "audio": 21.02,
-   "drift": -0.02
+   "audio": 21.04,
+   "drift": 0.0
   },
   {
    "w": "cawapres.",
-   "caption": 21.92,
-   "audio": 21.92,
+   "caption": 21.94,
+   "audio": 21.94,
    "drift": 0.0
   },
   {
    "w": "Menang.",
-   "caption": 22.93,
-   "audio": 22.93,
+   "caption": 22.95,
+   "audio": 22.95,
    "drift": 0.0
   },
   {
    "w": "96 juta",
-   "caption": 23.75,
-   "audio": 23.7,
-   "drift": -0.05
+   "caption": 23.76,
+   "audio": 23.76,
+   "drift": 0.0
   },
   {
    "w": "suara.",
-   "caption": 25.12,
-   "audio": 25.14,
+   "caption": 25.14,
+   "audio": 25.16,
    "drift": 0.02
   },
   {
    "w": "Tapi",
-   "caption": 25.95,
-   "audio": 25.94,
+   "caption": 25.96,
+   "audio": 25.95,
    "drift": -0.01
   },
   {
@@ -317,32 +317,32 @@
   },
   {
    "w": "menggugat",
-   "caption": 26.82,
-   "audio": 26.82,
+   "caption": 26.84,
+   "audio": 26.84,
    "drift": 0.0
   },
   {
    "w": "kertas",
-   "caption": 27.26,
-   "audio": 27.26,
+   "caption": 27.28,
+   "audio": 27.28,
    "drift": 0.0
   },
   {
    "w": "itu.",
-   "caption": 27.5,
-   "audio": 27.5,
+   "caption": 27.52,
+   "audio": 27.52,
    "drift": 0.0
   },
   {
    "w": "30 Oktober,",
    "caption": 27.8,
-   "audio": 27.8,
-   "drift": 0.0
+   "audio": 27.82,
+   "drift": 0.02
   },
   {
    "w": "Mahkamah",
-   "caption": 29.48,
-   "audio": 29.48,
+   "caption": 29.49,
+   "audio": 29.49,
    "drift": 0.0
   },
   {
@@ -353,15 +353,15 @@
   },
   {
    "w": "membatalkannya.",
-   "caption": 30.06,
-   "audio": 30.06,
+   "caption": 30.08,
+   "audio": 30.08,
    "drift": 0.0
   },
   {
    "w": "Kata",
-   "caption": 31.15,
-   "audio": 31.1,
-   "drift": -0.05
+   "caption": 31.16,
+   "audio": 31.16,
+   "drift": 0.0
   },
   {
    "w": "hakim,",
@@ -371,20 +371,20 @@
   },
   {
    "w": "bukti",
-   "caption": 32.13,
-   "audio": 32.13,
+   "caption": 32.14,
+   "audio": 32.14,
    "drift": 0.0
   },
   {
    "w": "ijazah",
-   "caption": 32.5,
-   "audio": 32.5,
+   "caption": 32.52,
+   "audio": 32.52,
    "drift": 0.0
   },
   {
    "w": "luar",
-   "caption": 32.96,
-   "audio": 32.96,
+   "caption": 32.98,
+   "audio": 32.98,
    "drift": 0.0
   },
   {
@@ -395,9 +395,9 @@
   },
   {
    "w": "nggak",
-   "caption": 33.56,
+   "caption": 33.58,
    "audio": 33.56,
-   "drift": 0.0
+   "drift": -0.02
   },
   {
    "w": "ketemu.",
@@ -407,8 +407,8 @@
   },
   {
    "w": "Lalu",
-   "caption": 34.73,
-   "audio": 34.73,
+   "caption": 34.74,
+   "audio": 34.74,
    "drift": 0.0
   },
   {
@@ -425,27 +425,27 @@
   },
   {
    "w": "DPR",
-   "caption": 36.16,
-   "audio": 36.16,
+   "caption": 36.18,
+   "audio": 36.18,
    "drift": 0.0
   },
   {
    "w": "teken",
-   "caption": 36.7,
-   "audio": 36.7,
+   "caption": 36.72,
+   "audio": 36.72,
    "drift": 0.0
   },
   {
    "w": "hak",
-   "caption": 37.49,
-   "audio": 37.49,
+   "caption": 37.5,
+   "audio": 37.5,
    "drift": 0.0
   },
   {
    "w": "menyatakan",
-   "caption": 37.64,
+   "caption": 37.66,
    "audio": 37.66,
-   "drift": 0.02
+   "drift": 0.0
   },
   {
    "w": "pendapat:",
@@ -455,8 +455,8 @@
   },
   {
    "w": "pintu",
-   "caption": 38.97,
-   "audio": 38.97,
+   "caption": 38.98,
+   "audio": 38.98,
    "drift": 0.0
   },
   {
@@ -468,14 +468,14 @@
   {
    "w": "pemakzulan.",
    "caption": 39.52,
-   "audio": 39.473,
-   "drift": -0.047
+   "audio": 39.47,
+   "drift": -0.05
   },
   {
    "w": "12 November,",
    "caption": 40.56,
-   "audio": 40.56,
-   "drift": 0.0
+   "audio": 40.54,
+   "drift": -0.02
   },
   {
    "w": "sebelum",
@@ -491,9 +491,9 @@
   },
   {
    "w": "itu,",
-   "caption": 42.34,
+   "caption": 42.32,
    "audio": 42.34,
-   "drift": 0.0
+   "drift": 0.02
   },
   {
    "w": "dia",
@@ -509,21 +509,21 @@
   },
   {
    "w": "Tanpa",
-   "caption": 43.95,
+   "caption": 43.94,
    "audio": 43.94,
-   "drift": -0.01
+   "drift": 0.0
   },
   {
    "w": "alasan.",
-   "caption": 44.2,
+   "caption": 44.22,
    "audio": 44.22,
-   "drift": 0.02
+   "drift": 0.0
   },
   {
    "w": "Sekarang",
    "caption": 45.12,
-   "audio": 45.11,
-   "drift": -0.01
+   "audio": 45.12,
+   "drift": 0.0
   },
   {
    "w": "presiden",
@@ -539,9 +539,9 @@
   },
   {
    "w": "dua",
-   "caption": 46.08,
+   "caption": 46.06,
    "audio": 46.08,
-   "drift": 0.0
+   "drift": 0.02
   },
   {
    "w": "nama.",
@@ -593,9 +593,9 @@
   },
   {
    "w": "lama.",
-   "caption": 50.92,
+   "caption": 50.94,
    "audio": 50.92,
-   "drift": 0.0
+   "drift": -0.02
   },
   {
    "w": "Penggantinya",
@@ -606,14 +606,14 @@
   {
    "w": "dipilih",
    "caption": 52.1,
-   "audio": 52.12,
-   "drift": 0.02
+   "audio": 52.1,
+   "drift": 0.0
   },
   {
    "w": "732",
-   "caption": 52.54,
+   "caption": 52.56,
    "audio": 52.54,
-   "drift": 0.0
+   "drift": -0.02
   },
   {
    "w": "orang.",
@@ -623,22 +623,22 @@
   },
   {
    "w": "Lo",
-   "caption": 54.64,
-   "audio": 54.64,
-   "drift": 0.0
+   "caption": 54.62,
+   "audio": 54.61,
+   "drift": -0.01
   },
   {
    "w": "nggak",
-   "caption": 54.84,
-   "audio": 54.84,
+   "caption": 54.78,
+   "audio": 54.78,
    "drift": 0.0
   },
   {
    "w": "termasuk.",
-   "caption": 55.04,
-   "audio": 55.04,
-   "drift": 0.0
+   "caption": 54.94,
+   "audio": 54.96,
+   "drift": 0.02
   }
  ],
- "pass": false
+ "pass": true
 }
