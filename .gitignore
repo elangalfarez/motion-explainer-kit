@@ -9,3 +9,4 @@ reels/.gate_blocks
 __pycache__/
 calib/
 examples/*/stills/
+reels/_lookdev/

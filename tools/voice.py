@@ -80,7 +80,12 @@ def align_whisper(wav, text, lang):
     from faster_whisper import WhisperModel  # pip install faster-whisper; needs huggingface.co reachable
     import difflib
     m = WhisperModel("small", device="cpu", compute_type="int8")
-    segs, _ = m.transcribe(str(wav), language=lang, word_timestamps=True, beam_size=5, initial_prompt=text[:200])
+    # decode with ffmpeg ourselves: faster-whisper's PyAV path breaks on PyAV >= 15 (metadata_errors kwarg)
+    import numpy as np
+    pcm = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(wav), "-f", "s16le", "-ac", "1", "-ar", "16000", "-"],
+                         capture_output=True, check=True).stdout
+    audio = np.frombuffer(pcm, np.int16).astype(np.float32) / 32768.0
+    segs, _ = m.transcribe(audio, language=lang, word_timestamps=True, beam_size=5, initial_prompt=text[:200])
     heard = [(w.word.strip(), w.start, w.end) for s in segs for w in s.words if norm(w.word)]
     target = [w for w in text.split() if norm(w)]
     sm = difflib.SequenceMatcher(None, [norm(w) for w in target], [norm(h[0]) for h in heard], autojunk=False)

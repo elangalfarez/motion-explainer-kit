@@ -87,6 +87,14 @@ export function guy(g, st, seed = 1) {
     g.beginPath(); g.moveTo(-11, -182); g.lineTo(11, -182); g.lineTo(17, -120); g.lineTo(0, -100); g.lineTo(-17, -120); g.closePath(); inkFill(g, C.orange, 5);
   }
   if (st.kind === 'elang') { g.fillStyle = C.ink; g.font = `900 34px ${C.font}`; g.textAlign = 'center'; g.fillText('A', 0, -135); }
+  if (st.kind === 'suit') { // role characters: white collar + tie (st.tie colour)
+    g.beginPath(); g.moveTo(-30, -205); g.lineTo(0, -182); g.lineTo(30, -205); g.closePath(); inkFill(g, C.white, 5);
+    g.beginPath(); g.moveTo(-9, -186); g.lineTo(9, -186); g.lineTo(14, -128); g.lineTo(0, -112); g.lineTo(-14, -128); g.closePath(); inkFill(g, st.tie || C.ink, 5);
+  }
+  if (st.kind === 'robe') { // judge: black robe with white bands
+    g.beginPath(); g.moveTo(-14, -203); g.lineTo(-2, -203); g.lineTo(-4, -158); g.lineTo(-16, -160); g.closePath(); inkFill(g, C.white, 4);
+    g.beginPath(); g.moveTo(14, -203); g.lineTo(2, -203); g.lineTo(4, -158); g.lineTo(16, -160); g.closePath(); inkFill(g, C.white, 4);
+  }
   // arms (rubber hose)
   const arm = (sx, hx, hy, side, sd) => {
     const ex = sx + hx, ey = -195 + hy;
@@ -108,6 +116,9 @@ export function guy(g, st, seed = 1) {
   blob(g, 0, 0, 120, 118, seed + 30, 34, 1.8); inkFill(g, C.white, 8);
   if (st.kind === 'elang') hairElang(g, seed);
   if (st.kind === 'viktor') hairViktor(g, seed);
+  if (st.hair === 'side') hairViktor(g, seed);
+  if (st.hair === 'peci') peci(g, seed);
+  if (st.hair === 'short') hairShort(g, seed, st.hairCol);
   if (st.kind === 'hermes') helmet(g, seed, st.wing ?? 0);
   // eyes
   const lx = (st.lookX ?? 0) * 14, ly = (st.lookY ?? 0) * 10, bl = st.blink ?? 1, eyes = st.eyes || 'dot';
@@ -132,6 +143,16 @@ function hairViktor(g, seed) { // neat side part
   g.beginPath(); const pts = [[-116, -20], [-118, -70], [-92, -112], [-40, -138], [20, -140], [70, -128], [106, -96], [119, -45], [116, -18], [96, -52], [60, -78], [-30, -86], [-36, -60], [-70, -60], [-96, -40]];
   pts.forEach((p, i) => { const x = p[0] + bj(seed * 5 + i, 1.2), y = p[1] + bj(seed * 5 + i + 40, 1.2); i ? g.lineTo(x, y) : g.moveTo(x, y); });
   g.closePath(); g.fillStyle = '#3A2E28'; g.fill(); g.lineWidth = 6; g.strokeStyle = C.ink; g.stroke();
+}
+function peci(g, seed) { // black cap worn by Indonesian officials (role marker, not a likeness)
+  g.beginPath(); const pts = [[-96, -66], [-90, -128], [90, -128], [96, -66], [60, -74], [-60, -74]];
+  pts.forEach((p, i) => { const x = p[0] + bj(seed * 9 + i, 1), y = p[1] + bj(seed * 9 + i + 20, 1); i ? g.lineTo(x, y) : g.moveTo(x, y); });
+  g.closePath(); g.fillStyle = C.ink; g.fill(); g.lineWidth = 6; g.strokeStyle = C.ink; g.stroke();
+}
+function hairShort(g, seed, col = '#2A2320') { // short crop
+  g.beginPath(); const pts = [[-114, -36], [-112, -80], [-80, -118], [-30, -136], [30, -136], [80, -118], [112, -80], [114, -36], [88, -70], [40, -88], [-40, -88], [-88, -70]];
+  pts.forEach((p, i) => { const x = p[0] + bj(seed * 4 + i, 1.2), y = p[1] + bj(seed * 4 + i + 30, 1.2); i ? g.lineTo(x, y) : g.moveTo(x, y); });
+  g.closePath(); g.fillStyle = col; g.fill(); g.lineWidth = 6; g.strokeStyle = C.ink; g.stroke();
 }
 function hairElang(g, seed) {
   g.beginPath(); const pts = [[-112, -30], [-120, -70], [-95, -105], [-70, -128], [-40, -150], [-20, -128], [5, -160], [25, -132], [55, -152], [70, -120], [100, -110], [118, -60], [114, -30], [80, -62], [40, -78], [0, -70], [-50, -78], [-90, -55]];

@@ -1,0 +1,49 @@
+{
+ "slug": "selembar_kertas",
+ "title": "Wapres mundur, dan ceritanya mulai dari selembar kertas",
+ "lang": "id",
+ "passages": [
+  "Wapres Indonesia mundur. Terakhir kejadian {1956.|sembilan belas lima puluh enam.}",
+  "Ceritanya mulai dari selembar kertas.",
+  "Surat penyetaraan ijazah: sekolah Gibran di luar negeri dianggap setara {SMA.|es em a.}",
+  "{2023,|dua ribu dua puluh tiga,} {MK|em ka} buka pintu: di bawah {40|empat puluh} boleh nyalon, asal pernah dipilih rakyat.",
+  "Sembilan hari kemudian, Wali Kota Solo umur {36|tiga puluh enam} daftar cawapres.",
+  "Menang. {96 juta|sembilan puluh enam juta} suara.",
+  "Tapi seorang advokat menggugat kertas itu.",
+  "{30 Oktober,|tiga puluh Oktober,} Mahkamah Agung membatalkannya. Kata hakim, bukti ijazah luar negerinya {nggak|nggak} ketemu.",
+  "Lalu {120|seratus dua puluh} anggota {DPR|de pe er} teken hak menyatakan pendapat: pintu ke pemakzulan.",
+  "{12 November,|dua belas November,} sebelum sidang itu, dia mundur. Tanpa alasan.",
+  "Sekarang presiden ajukan dua nama. {MPR|em pe er} pilih satu.",
+  "{96 juta|sembilan puluh enam juta} suara memilih wapres lama. Penggantinya dipilih {732|tujuh ratus tiga puluh dua} orang. Lo {nggak|nggak} termasuk."
+ ],
+ "voice": {
+  "voice_id": "bIHbv24MWmeRgasZH58o",
+  "model": "eleven_v3",
+  "fallback_voice_id": "7QN34D2r3hCNwbOYIeK0"
+ },
+ "sources": [
+  "https://www.antaranews.com/berita/5848983/mpr-kursi-wakil-presiden-kosong-sejak-gibran-mundur (resignation letter to MPR on 12 Nov 2026; VP post vacant from that day)",
+  "https://www.cnnindonesia.com/nasional/20261112142527-32-1426401/ketua-mpr-gibran-tak-ungkap-alasan-mundur-di-suratnya (MPR chair: the letter gives no reason)",
+  "https://ceritakawan.goodnewsfromindonesia.id/humaniora/sejarah-hari-ini-1-desember-1956-mohammad-hatta-tanggalkan-jabatan-wakil-presiden (Hatta resigned as VP effective 1 Dec 1956; secondary source)",
+  "https://afu.id/nasional/sebelum-gibran-ini-deretan-wapres-ri-yang-tak-menuntaskan-masa-jabatan-dari-hatta-hingga-megawati (only Hatta left the VP office by resigning; secondary)",
+  "https://news.detik.com/berita/d-7597670/siapa-saja-yang-pernah-jadi-wakil-presiden-indonesia-ini-daftarnya (VP list: other early exits Habibie, Megawati became president)",
+  "https://katadata.co.id/amp/berita/nasional/6ac3571b90b23/penjelasan-kemendikdasmen-beri-penyetaraaan-sma-buat-gibran-tanpa-bukti-ijazah (Surat Keterangan Dirjen Dikdasmen No. 9149/D.D1/KS/2019, 6 Aug 2019)",
+  "https://www.detik.com/sulsel/berita/d-6999920/profil-gibran-rakabuming-raka-anak-jokowi-yang-jadi-cawapres-prabowo (Orchid Park Secondary School Singapore; UTS Insearch Sydney; born 1 Oct 1987)",
+  "https://s.mkri.id/public/content/mkmk/mkmk_putusan_1699362723_f298cdead7a49cdd8837.pdf (MK 90/PUU-XXI/2023, 16 Oct 2023: 'berusia paling rendah 40 tahun atau pernah/sedang menduduki jabatan yang dipilih melalui pemilihan umum')",
+  "https://www.cnnindonesia.com/nasional/20231025101950-617-1015592/prabowo-dan-gibran-resmi-daftar-capres-cawapres-di-kpu (registered 25 Oct 2023 = 9 days after the ruling; age 36)",
+  "https://en.antaranews.com/news/308952/prabowo-declared-president-elect-by-poll-body (96,214,691 votes, 58.59%)",
+  "https://www.setneg.go.id/baca/index/prabowo_subianto_dan_gibran_rakabuming_resmi_dilantik_sebagai_presiden_dan_wakil_presiden_ri (inaugurated 20 Oct 2024)",
+  "https://www.antaranews.com/berita/5822103/ma-kabulkan-gugatan-kasasi-terkait-suket-penyetaraan-sma-gibran (MA 742 K/TUN/2026 decided Fri 30 Oct 2026; plaintiff advocate Subhan Palal)",
+  "https://www.antaranews.com/berita/5845459/ma-unggah-putusan-lengkap-mengenai-suket-pendidikan-sma-gibran (reasoning: no proof of a foreign ijazah/certificate found; 'tidak cermat'; suket batal)",
+  "https://news.detik.com/berita/d-8747089/ma-perintahkan-kemendikdasmen-cabut-suket-ijazah-sma-gibran (MA orders the ministry to revoke the suket)",
+  "https://www.cnnindonesia.com/nasional/20261112121251-32-1426289/wapres-gibran-mundur-paripurna-dpr-terkait-pemakzulan-dibatalkan (120 DPR members from 8 factions signed the HMP; plenary on 12 Nov cancelled)",
+  "https://www.mpr.go.id/uploads/jdih/UUD_1945_DALAM_SATU_NASKAH.pdf (UUD 1945 Pasal 8 ayat 2: MPR picks the VP from two candidates proposed by the President, within 60 days)",
+  "https://www.mpr.go.id/berita/mpr-ri-terima-dua-nama-cawapres-amran-sulaiman-sugiono (23 Nov 2026: two names submitted; vote session 11 Dec 2026)",
+  "https://www.antaranews.com/berita/4368279/anggota-mpr-ri-2024-2029-resmi-dilantik-setelah-pelantikan-dpr-dan-dpd (MPR 2024-2029 = 732 members: 580 DPR + 152 DPD)"
+ ],
+ "notes": [
+  "MA found no PROOF of a foreign diploma; the ministry says it received an O-level certificate, so the script quotes the judges and never says no document existed.",
+  "MK 90 covers any elected office, not only regional heads: script says 'pernah dipilih rakyat'.",
+  "Gibran gave no reason for resigning: script never states the ruling caused it; it shows the sequence of dated events."
+ ]
+}
