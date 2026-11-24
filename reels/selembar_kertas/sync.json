@@ -1,0 +1,644 @@
+{
+ "max_abs_drift": 0.051,
+ "worst": {
+  "w": "pintu:",
+  "caption": 14.0,
+  "audio": 13.949,
+  "drift": -0.051
+ },
+ "last_word_present": false,
+ "film_duration": 55.567,
+ "rows": [
+  {
+   "w": "Wapres",
+   "caption": 0.0,
+   "audio": 0.0,
+   "drift": 0.0
+  },
+  {
+   "w": "Indonesia",
+   "caption": 0.52,
+   "audio": 0.52,
+   "drift": 0.0
+  },
+  {
+   "w": "mundur.",
+   "caption": 1.12,
+   "audio": 1.12,
+   "drift": 0.0
+  },
+  {
+   "w": "Terakhir",
+   "caption": 1.99,
+   "audio": 1.99,
+   "drift": 0.0
+  },
+  {
+   "w": "kejadian",
+   "caption": 2.32,
+   "audio": 2.32,
+   "drift": 0.0
+  },
+  {
+   "w": "1956.",
+   "caption": 2.7,
+   "audio": 2.7,
+   "drift": 0.0
+  },
+  {
+   "w": "Ceritanya",
+   "caption": 4.61,
+   "audio": 4.61,
+   "drift": 0.0
+  },
+  {
+   "w": "mulai",
+   "caption": 4.98,
+   "audio": 5.0,
+   "drift": 0.02
+  },
+  {
+   "w": "dari",
+   "caption": 5.38,
+   "audio": 5.38,
+   "drift": 0.0
+  },
+  {
+   "w": "selembar",
+   "caption": 5.56,
+   "audio": 5.56,
+   "drift": 0.0
+  },
+  {
+   "w": "kertas.",
+   "caption": 5.84,
+   "audio": 5.84,
+   "drift": 0.0
+  },
+  {
+   "w": "Surat",
+   "caption": 6.71,
+   "audio": 6.68,
+   "drift": -0.03
+  },
+  {
+   "w": "penyetaraan",
+   "caption": 7.02,
+   "audio": 7.02,
+   "drift": 0.0
+  },
+  {
+   "w": "ijazah:",
+   "caption": 7.52,
+   "audio": 7.52,
+   "drift": 0.0
+  },
+  {
+   "w": "sekolah",
+   "caption": 8.36,
+   "audio": 8.36,
+   "drift": 0.0
+  },
+  {
+   "w": "Gibran",
+   "caption": 8.72,
+   "audio": 8.72,
+   "drift": 0.0
+  },
+  {
+   "w": "di",
+   "caption": 9.06,
+   "audio": 9.06,
+   "drift": 0.0
+  },
+  {
+   "w": "luar",
+   "caption": 9.18,
+   "audio": 9.18,
+   "drift": 0.0
+  },
+  {
+   "w": "negeri",
+   "caption": 9.38,
+   "audio": 9.38,
+   "drift": 0.0
+  },
+  {
+   "w": "dianggap",
+   "caption": 9.7,
+   "audio": 9.72,
+   "drift": 0.02
+  },
+  {
+   "w": "setara",
+   "caption": 10.1,
+   "audio": 10.1,
+   "drift": 0.0
+  },
+  {
+   "w": "SMA.",
+   "caption": 10.46,
+   "audio": 10.46,
+   "drift": 0.0
+  },
+  {
+   "w": "2023,",
+   "caption": 11.58,
+   "audio": 11.58,
+   "drift": 0.0
+  },
+  {
+   "w": "MK",
+   "caption": 13.2,
+   "audio": 13.2,
+   "drift": 0.0
+  },
+  {
+   "w": "buka",
+   "caption": 13.52,
+   "audio": 13.54,
+   "drift": 0.02
+  },
+  {
+   "w": "pintu:",
+   "caption": 14.0,
+   "audio": 13.949,
+   "drift": -0.051
+  },
+  {
+   "w": "di",
+   "caption": 14.81,
+   "audio": 14.81,
+   "drift": 0.0
+  },
+  {
+   "w": "bawah",
+   "caption": 14.88,
+   "audio": 14.9,
+   "drift": 0.02
+  },
+  {
+   "w": "40",
+   "caption": 15.14,
+   "audio": 15.14,
+   "drift": 0.0
+  },
+  {
+   "w": "boleh",
+   "caption": 15.52,
+   "audio": 15.5,
+   "drift": -0.02
+  },
+  {
+   "w": "nyalon,",
+   "caption": 15.82,
+   "audio": 15.82,
+   "drift": 0.0
+  },
+  {
+   "w": "asal",
+   "caption": 16.67,
+   "audio": 16.66,
+   "drift": -0.01
+  },
+  {
+   "w": "pernah",
+   "caption": 16.96,
+   "audio": 16.96,
+   "drift": 0.0
+  },
+  {
+   "w": "dipilih",
+   "caption": 17.2,
+   "audio": 17.2,
+   "drift": 0.0
+  },
+  {
+   "w": "rakyat.",
+   "caption": 17.56,
+   "audio": 17.56,
+   "drift": 0.0
+  },
+  {
+   "w": "Sembilan",
+   "caption": 18.2,
+   "audio": 18.19,
+   "drift": -0.01
+  },
+  {
+   "w": "hari",
+   "caption": 18.46,
+   "audio": 18.46,
+   "drift": 0.0
+  },
+  {
+   "w": "kemudian,",
+   "caption": 18.68,
+   "audio": 18.68,
+   "drift": 0.0
+  },
+  {
+   "w": "Wali",
+   "caption": 19.57,
+   "audio": 19.57,
+   "drift": 0.0
+  },
+  {
+   "w": "Kota",
+   "caption": 19.78,
+   "audio": 19.78,
+   "drift": 0.0
+  },
+  {
+   "w": "Solo",
+   "caption": 20.02,
+   "audio": 20.02,
+   "drift": 0.0
+  },
+  {
+   "w": "umur",
+   "caption": 20.3,
+   "audio": 20.3,
+   "drift": 0.0
+  },
+  {
+   "w": "36",
+   "caption": 20.7,
+   "audio": 20.7,
+   "drift": 0.0
+  },
+  {
+   "w": "daftar",
+   "caption": 21.04,
+   "audio": 21.02,
+   "drift": -0.02
+  },
+  {
+   "w": "cawapres.",
+   "caption": 21.92,
+   "audio": 21.92,
+   "drift": 0.0
+  },
+  {
+   "w": "Menang.",
+   "caption": 22.93,
+   "audio": 22.93,
+   "drift": 0.0
+  },
+  {
+   "w": "96 juta",
+   "caption": 23.75,
+   "audio": 23.7,
+   "drift": -0.05
+  },
+  {
+   "w": "suara.",
+   "caption": 25.12,
+   "audio": 25.14,
+   "drift": 0.02
+  },
+  {
+   "w": "Tapi",
+   "caption": 25.95,
+   "audio": 25.94,
+   "drift": -0.01
+  },
+  {
+   "w": "seorang",
+   "caption": 26.12,
+   "audio": 26.12,
+   "drift": 0.0
+  },
+  {
+   "w": "advokat",
+   "caption": 26.36,
+   "audio": 26.36,
+   "drift": 0.0
+  },
+  {
+   "w": "menggugat",
+   "caption": 26.82,
+   "audio": 26.82,
+   "drift": 0.0
+  },
+  {
+   "w": "kertas",
+   "caption": 27.26,
+   "audio": 27.26,
+   "drift": 0.0
+  },
+  {
+   "w": "itu.",
+   "caption": 27.5,
+   "audio": 27.5,
+   "drift": 0.0
+  },
+  {
+   "w": "30 Oktober,",
+   "caption": 27.8,
+   "audio": 27.8,
+   "drift": 0.0
+  },
+  {
+   "w": "Mahkamah",
+   "caption": 29.48,
+   "audio": 29.48,
+   "drift": 0.0
+  },
+  {
+   "w": "Agung",
+   "caption": 29.82,
+   "audio": 29.82,
+   "drift": 0.0
+  },
+  {
+   "w": "membatalkannya.",
+   "caption": 30.06,
+   "audio": 30.06,
+   "drift": 0.0
+  },
+  {
+   "w": "Kata",
+   "caption": 31.15,
+   "audio": 31.1,
+   "drift": -0.05
+  },
+  {
+   "w": "hakim,",
+   "caption": 31.34,
+   "audio": 31.34,
+   "drift": 0.0
+  },
+  {
+   "w": "bukti",
+   "caption": 32.13,
+   "audio": 32.13,
+   "drift": 0.0
+  },
+  {
+   "w": "ijazah",
+   "caption": 32.5,
+   "audio": 32.5,
+   "drift": 0.0
+  },
+  {
+   "w": "luar",
+   "caption": 32.96,
+   "audio": 32.96,
+   "drift": 0.0
+  },
+  {
+   "w": "negerinya",
+   "caption": 33.16,
+   "audio": 33.16,
+   "drift": 0.0
+  },
+  {
+   "w": "nggak",
+   "caption": 33.56,
+   "audio": 33.56,
+   "drift": 0.0
+  },
+  {
+   "w": "ketemu.",
+   "caption": 33.82,
+   "audio": 33.82,
+   "drift": 0.0
+  },
+  {
+   "w": "Lalu",
+   "caption": 34.73,
+   "audio": 34.73,
+   "drift": 0.0
+  },
+  {
+   "w": "120",
+   "caption": 35.02,
+   "audio": 35.02,
+   "drift": 0.0
+  },
+  {
+   "w": "anggota",
+   "caption": 35.6,
+   "audio": 35.6,
+   "drift": 0.0
+  },
+  {
+   "w": "DPR",
+   "caption": 36.16,
+   "audio": 36.16,
+   "drift": 0.0
+  },
+  {
+   "w": "teken",
+   "caption": 36.7,
+   "audio": 36.7,
+   "drift": 0.0
+  },
+  {
+   "w": "hak",
+   "caption": 37.49,
+   "audio": 37.49,
+   "drift": 0.0
+  },
+  {
+   "w": "menyatakan",
+   "caption": 37.64,
+   "audio": 37.66,
+   "drift": 0.02
+  },
+  {
+   "w": "pendapat:",
+   "caption": 38.1,
+   "audio": 38.1,
+   "drift": 0.0
+  },
+  {
+   "w": "pintu",
+   "caption": 38.97,
+   "audio": 38.97,
+   "drift": 0.0
+  },
+  {
+   "w": "ke",
+   "caption": 39.36,
+   "audio": 39.36,
+   "drift": 0.0
+  },
+  {
+   "w": "pemakzulan.",
+   "caption": 39.52,
+   "audio": 39.473,
+   "drift": -0.047
+  },
+  {
+   "w": "12 November,",
+   "caption": 40.56,
+   "audio": 40.56,
+   "drift": 0.0
+  },
+  {
+   "w": "sebelum",
+   "caption": 41.8,
+   "audio": 41.79,
+   "drift": -0.01
+  },
+  {
+   "w": "sidang",
+   "caption": 42.1,
+   "audio": 42.1,
+   "drift": 0.0
+  },
+  {
+   "w": "itu,",
+   "caption": 42.34,
+   "audio": 42.34,
+   "drift": 0.0
+  },
+  {
+   "w": "dia",
+   "caption": 42.99,
+   "audio": 42.99,
+   "drift": 0.0
+  },
+  {
+   "w": "mundur.",
+   "caption": 43.12,
+   "audio": 43.12,
+   "drift": 0.0
+  },
+  {
+   "w": "Tanpa",
+   "caption": 43.95,
+   "audio": 43.94,
+   "drift": -0.01
+  },
+  {
+   "w": "alasan.",
+   "caption": 44.2,
+   "audio": 44.22,
+   "drift": 0.02
+  },
+  {
+   "w": "Sekarang",
+   "caption": 45.12,
+   "audio": 45.11,
+   "drift": -0.01
+  },
+  {
+   "w": "presiden",
+   "caption": 45.42,
+   "audio": 45.42,
+   "drift": 0.0
+  },
+  {
+   "w": "ajukan",
+   "caption": 45.76,
+   "audio": 45.76,
+   "drift": 0.0
+  },
+  {
+   "w": "dua",
+   "caption": 46.08,
+   "audio": 46.08,
+   "drift": 0.0
+  },
+  {
+   "w": "nama.",
+   "caption": 46.4,
+   "audio": 46.4,
+   "drift": 0.0
+  },
+  {
+   "w": "MPR",
+   "caption": 47.16,
+   "audio": 47.16,
+   "drift": 0.0
+  },
+  {
+   "w": "pilih",
+   "caption": 47.78,
+   "audio": 47.78,
+   "drift": 0.0
+  },
+  {
+   "w": "satu.",
+   "caption": 48.1,
+   "audio": 48.1,
+   "drift": 0.0
+  },
+  {
+   "w": "96 juta",
+   "caption": 48.77,
+   "audio": 48.8,
+   "drift": 0.03
+  },
+  {
+   "w": "suara",
+   "caption": 49.72,
+   "audio": 49.72,
+   "drift": 0.0
+  },
+  {
+   "w": "memilih",
+   "caption": 50.06,
+   "audio": 50.06,
+   "drift": 0.0
+  },
+  {
+   "w": "wapres",
+   "caption": 50.52,
+   "audio": 50.52,
+   "drift": 0.0
+  },
+  {
+   "w": "lama.",
+   "caption": 50.92,
+   "audio": 50.92,
+   "drift": 0.0
+  },
+  {
+   "w": "Penggantinya",
+   "caption": 51.68,
+   "audio": 51.68,
+   "drift": 0.0
+  },
+  {
+   "w": "dipilih",
+   "caption": 52.1,
+   "audio": 52.12,
+   "drift": 0.02
+  },
+  {
+   "w": "732",
+   "caption": 52.54,
+   "audio": 52.54,
+   "drift": 0.0
+  },
+  {
+   "w": "orang.",
+   "caption": 53.74,
+   "audio": 53.74,
+   "drift": 0.0
+  },
+  {
+   "w": "Lo",
+   "caption": 54.64,
+   "audio": 54.64,
+   "drift": 0.0
+  },
+  {
+   "w": "nggak",
+   "caption": 54.84,
+   "audio": 54.84,
+   "drift": 0.0
+  },
+  {
+   "w": "termasuk.",
+   "caption": 55.04,
+   "audio": 55.04,
+   "drift": 0.0
+  }
+ ],
+ "pass": false
+}

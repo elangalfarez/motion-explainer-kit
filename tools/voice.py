@@ -107,6 +107,15 @@ def align_whisper(wav, text, lang, toks=None):
     segs, _ = m.transcribe(audio, language=lang, word_timestamps=True, beam_size=5)  # no prompt: it pushes whisper to spell some numbers out, others not
     heard = [(norm(w.word), float(w.start), float(w.end)) for s in segs for w in s.words if norm(w.word)]
     toks = toks or [(w, w) for w in text.split()]
+    spoken_n = [norm(w) for _, sp in toks for w in sp.split() if norm(w)]
+    split = []
+    for h, s0, e0 in heard:  # whisper sometimes glues two script words into one: split it by letter count
+        pair = next((i for i in range(len(spoken_n) - 1) if len(h) > 5 and difflib.SequenceMatcher(None, spoken_n[i] + spoken_n[i + 1], h).ratio() > .88
+                     and difflib.SequenceMatcher(None, spoken_n[i], h).ratio() < .75), None)
+        if pair is None: split.append((h, s0, e0)); continue
+        a_, b_ = spoken_n[pair], spoken_n[pair + 1]; m_ = s0 + (e0 - s0) * len(a_) / (len(a_) + len(b_))
+        split += [(a_, s0, m_), (b_, m_, e0)]
+    heard = split
     # one target per SPOKEN word; each also accepts its token's display form ("96", "2023", "SMA"), because whisper
     # writes some numbers as digits and spells others out
     sub = []
@@ -140,8 +149,28 @@ def align_whisper(wav, text, lang, toks=None):
         for q, w in enumerate(ws):
             out.append((w, s0 + (e0 - s0) * q / len(ws), s0 + (e0 - s0) * (q + 1) / len(ws)))
         last = e0
+    out = snap_onsets(out, audio)
     print(f"whisper matched {good}/{n} spoken words ({good / max(1, n):.2f}; below 0.9: check names/numbers)")
     return out, None
+
+
+def snap_onsets(words, audio, sr=16000):
+    """Move a word's start onto the audio onset that ends a real pause (>= 0.12 s under -45 dB) when that onset is
+    within 0.4 s. Whisper's word edges drift around pauses; the energy envelope does not."""
+    hop = int(.01 * sr); db = 20 * np.log10(np.array([np.sqrt(np.mean(audio[i:i + hop] ** 2)) + 1e-9 for i in range(0, len(audio) - hop, hop)]))
+    onsets, quiet = [], 0
+    for i, v in enumerate(db):
+        if v < -45: quiet += 1; continue
+        if quiet >= 12 and v > -35: onsets.append(i * hop / sr)
+        if v > -35: quiet = 0
+    out = []
+    for k, (w, s0, e0) in enumerate(words):
+        prev_e = out[-1][2] if out else 0.0
+        cand = [o for o in onsets if abs(o - s0) <= .4 and o >= prev_e - .02]
+        if cand:
+            o = min(cand, key=lambda o: abs(o - s0)); s0 = o; e0 = max(e0, o + .05)
+        out.append((w, s0, e0))
+    return out
 
 
 def main():
