@@ -233,11 +233,14 @@ export function captions(g, t, o = {}) {
   const sp = size * .3, ws = c.map(w => g.measureText(w.w).width), tw = ws.reduce((a, b) => a + b, 0) + sp * (c.length - 1);
   const pop = prog(t, c[0].s - .08, c[0].s + .12, ease.outBack), fit = Math.min(1, (o.maxW ?? W - 90) / (tw + 16));   // long words shrink to fit the frame
   g.translate(W / 2, y); g.scale((.85 + .15 * pop) * fit, (.85 + .15 * pop) * fit); g.translate(-W / 2, -y);
+  if (o.pill) { const pw = tw + size * 1.1, ph = size * 1.5; // paper pill: the caption stays readable over any art
+    rrect(g, W / 2 - pw / 2 + 6, y - ph / 2 + 7, pw, ph, ph / 2); g.fillStyle = C.ink; g.fill();
+    rrect(g, W / 2 - pw / 2, y - ph / 2, pw, ph, ph / 2); g.fillStyle = C.paper; g.fill(); g.lineWidth = 6; g.strokeStyle = C.ink; g.stroke(); }
   let x = W / 2 - tw / 2;
   c.forEach((w, i) => { const act = t >= w.s - .03 && t < w.e + .05, on = t >= w.s - .03;
     g.save(); g.translate(x + ws[i] / 2, y); if (act) { g.rotate(-.03); g.scale(1.08, 1.08); }
     g.lineWidth = 16; g.strokeStyle = C.ink; g.strokeText(w.w, -ws[i] / 2, 0);
-    g.fillStyle = act ? C.orange : (on ? C.white : 'rgba(255,255,255,.55)'); g.fillText(w.w, -ws[i] / 2, 0); g.restore();
+    g.fillStyle = act ? C.orange : (on || o.dim === false ? C.white : 'rgba(255,255,255,.55)'); g.fillText(w.w, -ws[i] / 2, 0); g.restore();
     x += ws[i] + sp; });
   g.restore();
 }

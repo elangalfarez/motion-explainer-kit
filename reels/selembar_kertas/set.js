@@ -19,7 +19,7 @@ function seats() { // exactly 732 seats in 8 concentric rows (the MPR's 580 DPR 
   const M = new THREE.Matrix4(), pos = []; let k = 0;
   radii.forEach((r, ri) => { for (let i = 0; i < counts[ri]; i++) {
     const a = (i + (ri % 2) * .5) / counts[ri] * Math.PI * 2, p = [Math.sin(a) * r, .25 + ri * .12, -Math.cos(a) * r];
-    M.makeRotationY(-a); M.setPosition(...p); im.setMatrixAt(k, M); im.setColorAt(k, new THREE.Color(0xB9B2A7)); pos.push(p); k++; } });
+    M.makeRotationY(-a); M.setPosition(...p); im.setMatrixAt(k, M); im.setColorAt(k, new THREE.Color(0x9C6B45)); pos.push(p); k++; } });
   S.add(im); SET.seats = im; SET.seatPos = pos; SET.seatCount = k;
 }
 function voters() { // the 96 million: a field of small discs outside the ring (a picture of scale, not a count)
@@ -83,7 +83,7 @@ export function updateVoters(rise, sink) { // rise 0..1 wave outward, sink 0..1 
   });
   im.instanceMatrix.needsUpdate = true;
 }
-const GREY = new THREE.Color(0xB9B2A7), LIT = new THREE.Color(C.orange);
+const GREY = new THREE.Color(0x9C6B45), LIT = new THREE.Color(C.orange);
 export function updateSeats(lit) { // lit 0..1: seats light up orange in a sweep
   const im = SET.seats, c = new THREE.Color();
   for (let i = 0; i < SET.seatCount; i++) { const on = lit * SET.seatCount * 1.2 - i > 0; im.setColorAt(i, on ? LIT : GREY); }

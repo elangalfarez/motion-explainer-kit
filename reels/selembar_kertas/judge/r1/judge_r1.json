@@ -1,0 +1,138 @@
+{
+  "round": 1,
+  "scores": {
+    "hook_2s": 6,
+    "story_twist": 7,
+    "truth_labels": 7,
+    "motion_craft": 6,
+    "camera_one_take": 6,
+    "every_2s_new": 5,
+    "readability": 5,
+    "style_consistency": 7,
+    "audio_mix": 6,
+    "ending": 4
+  },
+  "average": 5.9,
+  "evidence": {
+    "hook_2s": [
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t000.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t002.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge_strips/hook.png"
+    ],
+    "story_twist": [
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t010.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t026.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t034.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t050.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t054.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t055.30.png"
+    ],
+    "truth_labels": [
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t024.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t032.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t048.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t050.00.png"
+    ],
+    "motion_craft": [
+      "/home/user/kit/reels/selembar_kertas/judge_strips/stamp_MA.png",
+      "/home/user/kit/reels/selembar_kertas/judge_strips/whip_2023.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t006.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t052.00.png"
+    ],
+    "camera_one_take": [
+      "/home/user/kit/reels/selembar_kertas/judge_strips/turn_12nov.png",
+      "/home/user/kit/reels/selembar_kertas/judge_strips/whip_2023.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t042.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t055.30.png"
+    ],
+    "every_2s_new": [
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t032.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t034.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t020.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t022.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t050.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t052.00.png"
+    ],
+    "readability": [
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t040.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t032.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t046.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t016.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t008.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/phone_sheet.png"
+    ],
+    "style_consistency": [
+      "/home/user/kit/reels/selembar_kertas/judge/r1/phone_sheet.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t048.00.png",
+      "/home/user/kit/examples/viktor_gratis/stills/sheet.png",
+      "/home/user/kit/examples/tikus_hanoi/stills/sheet.png"
+    ],
+    "audio_mix": [],
+    "ending": [
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t054.00.png",
+      "/home/user/kit/reels/selembar_kertas/judge/r1/t055.30.png"
+    ]
+  },
+  "fixes": {
+    "hook_2s": "0.0-2.0 s: put the news on frame 1 as one big settled headline 'WAPRES MUNDUR' (the 0.00 frame shows only a grey 'WAPRES' sliding in, clipped at the left edge), and have the WAPRES character already rising from and stepping off the chair by 0.5 s. Right now he stands beside the chair and exits only at ~2 s, cropped in half.",
+    "story_twist": "Put the turn and the twist on screen, not only in the voice. At ~10-11 s show the '= SMA' mark landing on the sheet. At 25-27 s give the advokat a chip and have him hand the same sheet across to the MA court. At 52-55 s show the lit hall of 732 seats behind the fence so LO is visibly outside the thing being decided.",
+    "truth_labels": "32-35 s: make 'PUTUSAN MA 742 K/TUN/2026' legible on its own line (it is overprinted on 'SURAT KETERANGAN'). 48 s: the 'MENKO PMK' chip is not backed by any source in script.json (the MPR source names only the two candidates), so check it at the source or use a neutral chip. 50 s: 'SUARA MEMILIH WAPRES LAMA' gives the pair's 96 M ticket votes to the VP alone; label it 'SUARA PASANGAN 02' or 'SUARA PRABOWO-GIBRAN'.",
+    "motion_craft": "Replace the double-exposure motion smear (doubled outlines at 6 s, 40.2-40.4 s, 52 s and the building at 54 s) with real motion blur or plain smear frames on twos. Give characters acting beats: the advokat points at the sheet (26 s), the 120 heads raise hands one by one (36-38 s), and WAPRES stands up and walks out (0-2 s). The only hit sold well is the 30.0-30.2 s stamp (kick, oversize arrival, burst, settle).",
+    "camera_one_take": "40.2-40.4 s: the move from the DPR door to the chair is a cross-dissolve of stacked translucent buildings plus a grid of grey blocks under the floor through 41.0 s. Replace it with a real camera travel along the road, and end the reel back on the chair stage as the beat table intends. The 11.3-11.6 s strip shows no whip: the court is static and a leftover SYDNEY chip fades over it.",
+    "every_2s_new": "Break the near-repeat pairs. 32->34 s: the DIBATALKAN doc plus HAKIM MA is the same shot, so push to the quote or tear the sheet. 20->22 s: the same two men get a new headline only, so start the registration walk. 50->52 s: the same dot field, so let the dots fall away and the hall light up. 36->38 s: the same head grid, so raise hands visibly. 28->30 s.",
+    "readability": "Keep the caption band clear of art. 40 s: the orange word 'pemakzulan' sits on the orange door. 8 s and 10 s: the caption sits on the signature/stamp and on the document's bottom edge. 52 s: over buildings and trees. 54-55.3 s: over the fence post and straddling the black rail's edge. 46 s: unspoken words are grey fill at 1.02:1 contrast on taupe. Raise sub-labels from 36-42 px cap height (about 48-56 px font) to at least 56 px font.",
+    "style_consistency": "Hold the reference look: the characters are small, neutral and rarely posed compared with the viktor_gratis and tikus_hanoi sheets (big expressive poses, props in hand). Remove the translucent ghost geometry (6, 40, 52 s), which breaks the clean cel line. Replace the flat sprite grid of heads at 36-38 s, which floats over the door and building, with seated figures on the ground.",
+    "audio_mix": "Regenerate or re-take the last passage so 'termasuk' ends naturally, then leave at least 0.4 s of room tone before the cut. The measured loudness (-14.8 LUFS, -1.0 dBTP), ducking and 0.051 s caption drift are fine.",
+    "ending": "53-55.3 s: fix the clipped 'termasuk', hold the settled final frame 0.4 s, then hard cut. Fill the empty middle (y about 380-1030 px at 55.3 s) with what LO is excluded from (the 732 lit seats or the chair) so the last image reframes the story. A bare headline over fog does not do that."
+  },
+  "similar_pairs": [
+    {"a": "t032.00.png", "b": "t034.00.png", "why": "same DIBATALKAN document, same quote card, same HAKIM MA; only the judge shifts left and the caption changes"},
+    {"a": "t020.00.png", "b": "t022.00.png", "why": "same court columns, same WALI KOTA/CAWAPRES man and judge in the same places; only the headline and chip text swap"},
+    {"a": "t050.00.png", "b": "t052.00.png", "why": "same dot field and buildings from the crane; 52 s loses the headline and adds smear"},
+    {"a": "t036.00.png", "b": "t038.00.png", "why": "same grid of heads and dome; the counter goes 101->120 and the camera drifts"},
+    {"a": "t028.00.png", "b": "t030.00.png", "why": "same MA document and judge; the headline completes and the camera pushes"},
+    {"a": "t042.00.png", "b": "t044.00.png", "why": "same chair stage; the headline swaps and WAPRES slides off the left edge (weaker)"},
+    {"a": "t012.00.png", "b": "t014.00.png", "why": "same 2023 headline on the same court; the barrier lifts and a judge enters (partial change, borderline)"}
+  ],
+  "readability_issues": [
+    {"t": "0.00", "issue": "headline 'WAPRES' clipped at the left frame edge, grey and smeared mid-slide"},
+    {"t": "8.00", "issue": "'SURAT KETERANGAN' clipped at both frame edges; caption runs over the signature squiggle and stamp circle"},
+    {"t": "10.00", "issue": "caption 'luar negeri dianggap' sits on the document's bottom border"},
+    {"t": "10.00 / 28.00 / 30.00", "issue": "document number 'No. 9149/D.D1/KS/2019' is about 20-25 px cap height, unreadable on a phone (decorative, but it is a cited fact)"},
+    {"t": "16.00", "issue": "barrier arm cuts through the headline between 'DI' and 'BAWAH'; the 'MIN. 40 TAHUN' sign floats in mid-air between the columns"},
+    {"t": "18.00", "issue": "'+9' overlaps the barrier arm; the WALI KOTA and HAKIM MK chips touch"},
+    {"t": "24.00", "issue": "sub-label 'SUARA · PEMILU 2024' is 36 px cap height (about 48 px font), under 56"},
+    {"t": "28.00", "issue": "'30' and 'OKT' overlap ('30OKT'); the HAKIM MA chip overlaps the document"},
+    {"t": "30.00", "issue": "caption 'Mahkamah Agung membatalkannya.' spans about x 50-1030, near the safe-zone edge; in the stamp strip 'Agung' and 'membatalkannya' run together with no space"},
+    {"t": "32.00-34.00", "issue": "'PUTUSAN MA 742 K/TUN/2026' is overprinted on 'SURAT KETERANGAN': both illegible"},
+    {"t": "40.00", "issue": "orange caption word 'pemakzulan' sits on the orange door (same hue); the door also crosses the caption band"},
+    {"t": "40.80", "issue": "turn strip: headline collides mid-animation ('12 NO' + '2026' overlap)"},
+    {"t": "44.00", "issue": "'TANPA' alone as a headline, white over the orange chair; 'ALASAN' never joins it in the sampled frame"},
+    {"t": "46.00", "issue": "caption 'dua nama.' is grey fill on taupe, contrast 1.02:1 (sampled fill 140,143,135 vs bg 151,142,127); legible only by its outline"},
+    {"t": "48.00", "issue": "the MENTAN and MPR chips touch"},
+    {"t": "50.00", "issue": "sub-label 'SUARA MEMILIH WAPRES LAMA' is 42 px cap height (about 56 px font, borderline); speed lines cross the headline area"},
+    {"t": "52.00", "issue": "caption 'Penggantinya dipilih 732' over buildings and trees with ghosted outlines (busy art); no headline"},
+    {"t": "54.00", "issue": "caption 'orang.' sits on the fence post and rail"},
+    {"t": "55.30", "issue": "caption 'Lo nggak termasuk.' straddles the bottom edge of the black fence rail; the 'LO' chip text is about 36 px cap height"}
+  ],
+  "other_issues": [
+    {"t": "2.00", "issue": "WAPRES character cropped in half by the left frame edge"},
+    {"t": "6.00", "issue": "'SELEMBAR KERTAS' headline but no sheet of paper anywhere in the frame; buildings drawn with doubled outlines (smear reads as a render error)"},
+    {"t": "10.00", "issue": "SINGAPURA and SYDNEY chips float in empty sky, detached from the building tops"},
+    {"t": "11.30-11.43", "issue": "a leftover SYDNEY chip hangs over the MK court for about 5 frames, then fades (wrong scene)"},
+    {"t": "~10-11", "issue": "the '= SMA' payoff of the first document beat never appears in any judge frame"},
+    {"t": "24.00", "issue": "no ballots shoot out of the box; a stray white square is cropped at the top-right edge; the counter is mid-roll (48.7 M) while the caption says 96 juta"},
+    {"t": "26.00", "issue": "the advokat has no chip (every other actor has one); about 60% of the frame is empty wall; a building edge is cropped at the right"},
+    {"t": "32.00-34.00", "issue": "red ink dots float outside the document"},
+    {"t": "36.00-38.00", "issue": "the grid of heads floats in front of the building and over the orange door with no ground contact; reads as a pasted sprite, not people"},
+    {"t": "40.30-41.00", "issue": "a field of translucent grey blocks shows under the floor plane during the turn to the chair (render artifact)"},
+    {"t": "42.00-48.00", "issue": "the bottom 40% of the frame is empty white or taupe floor in every chair-stage frame"},
+    {"t": "44.00", "issue": "WAPRES character half off the left edge; the envelope and '12 NOV' chip from the beat table do not appear"},
+    {"t": "46.00", "issue": "the figure in a peci has no chip at this moment (it appears at 48 s as MPR)"},
+    {"t": "54.00", "issue": "the '732' number floats over fog with no hall or seats; the LO chip is missing; the building at the right has doubled outlines"},
+    {"t": "55.30", "issue": "the ending is not back at the chair stage (the bookend in beats.md); thin black vertical lines at both frame edges look like stray geometry"}
+  ],
+  "hook_frame_verdict": "Would not reliably stop a scroll. Frame 0.00 has a big orange chair and an angry man, and the voice line is strong news for Indonesian viewers. On screen, though, the headline is a grey, clipped 'WAPRES' still sliding in, the verb 'MUNDUR' is not in it, and nothing happens to the chair in the first 2 s. The hook strip does show motion from frame 1 (headline slide, chip pop with overshoot).",
+  "ending_verdict": "The twist line is right in the script, and the 55.3 s frame shows 'NGGAK TERMASUK' plus LO behind a fence. It does not land: the voice clips 'termasuk' mid-sound, the frame shows nothing LO is excluded from (the 732 seats are never drawn), and the middle third of the frame is empty fog.",
+  "verdict": "Round 1 does not pass (average 5.9, seven criteria under 7). The script is a real chain of cause and effect, and the numbers on screen (1956, 2023, 40, +9 HARI, 36, 30 OKT 2026, 120, 8 FRAKSI, 12 NOV 2026, 732) match script.json. The C&H characters, type and orange accent match the house references, and the 30.0-30.2 s DIBATALKAN stamp is a well-sold hit with kick, oversize arrival, burst and settle. The rest falls short of the bar. The hook frame is a clipped grey 'WAPRES'. Several promised visual payoffs never appear: the falling sheet at 6 s, '= SMA', the advokat's chip, the ballots, the 732 seats, and the chair bookend. Captions and headlines collide with art in at least ten sampled moments; the worst are 40 s (orange on orange door), 32-34 s (overprinted MA citation) and 46 s (1.02:1 grey caption). Five consecutive pairs are near-repeats. The 40.2-40.4 s 'turn' is a ghosted cross-dissolve, not a camera move. The ending lands neither visually nor aurally because 'termasuk' is clipped. Fix order: the ending (audio clip plus a final image that shows the 732 inside and LO outside), caption-band collisions, the 40 s transition, then the near-repeat pairs."
+}

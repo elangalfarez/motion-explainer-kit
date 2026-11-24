@@ -9,7 +9,7 @@ import { ANG, polar } from './set.js';
 import { anchors } from './anchors.js';
 
 // standard station view: eye level, characters at r 38 fill ~650 px with feet near y 1550, building behind
-const st = (a, k = {}) => ({ a, r: 28, h: 2.2, la: a, lr: 41, lh: 2.0, fov: 40, ...k });
+const st = (a, k = {}) => ({ a, r: 29, h: 2.2, la: a, lr: 41, lh: 2.0, fov: 40, ...k });
 let KEYS = null;
 function camKeys() {
   if (KEYS) return KEYS; const a = anchors(), k = [];
@@ -19,8 +19,8 @@ function camKeys() {
     add(tLand - .02, to, ease.inOutExpo);
   };
   // hook: push in on the VP beside the chair, already moving
-  add(0, { a: 0, r: -13.5, h: 3.4, la: 0, lr: 6, lh: 2.7, fov: 40 }, ease.lin);
-  add(a.cerita - .25, { a: 0, r: -10.5, h: 3.5, la: 0, lr: 6, lh: 2.9, fov: 38 }, ease.out);
+  add(0, { a: 0, r: -13.5, h: 2.7, la: 0, lr: 6, lh: 2.9, fov: 40 }, ease.lin);
+  add(a.cerita - .25, { a: 0, r: -10.5, h: 2.8, la: 0, lr: 6, lh: 3.1, fov: 38 }, ease.out);
   // the paper falls: crane up and over the chair, follow it down towards the schools
   add(a.kertas - .1, { a: 0, r: -4, h: 13, la: 0, lr: 16, lh: 15, fov: 44 }, ease.inOut);
   add(a.surat + .05, st(0, { r: 35, h: 3.3, lr: 44, lh: 3.4, fov: 38 }), easeX.land);
@@ -51,19 +51,20 @@ function camKeys() {
   add(a.pintu2 - .3, st(ANG.dpr + 3, { r: 30, h: 3.2, lh: 3.6, fov: 44 }), ease.inOut);
   add(a.nov - .6, st(ANG.dpr + 5, { r: 33.5, h: 3, lh: 3.2, fov: 40 }), ease.out);
   // back to the chair: the look target sweeps around the ring (a whip turn), the camera flies in
-  add(a.nov + .25, { a: ANG.dpr + 2, r: 22, h: 3.8, la: ANG.dpr - 180, lr: 30, lh: -1.2, fov: 44 }, ease.inOutExpo);
-  add(a.tanpa, { a: ANG.dpr, r: 12.5, h: 3.6, la: ANG.dpr - 180, lr: 30, lh: -2, fov: 40 }, easeX.land);
-  add(a.sekarang - .1, { a: ANG.dpr - 3, r: 12.3, h: 3.5, la: ANG.dpr - 183, lr: 30, lh: -1.9, fov: 40 });
+  add(a.nov + .25, { a: ANG.dpr + 2, r: 22, h: 3.2, la: ANG.dpr - 180, lr: 30, lh: 1.2, fov: 44 }, ease.inOutExpo);
+  add(a.tanpa, { a: ANG.dpr, r: 10, h: 2.5, la: ANG.dpr - 180, lr: 30, lh: 1.4, fov: 40 }, easeX.land);
+  add(a.sekarang - .1, { a: ANG.dpr - 3, r: 10, h: 2.5, la: ANG.dpr - 183, lr: 30, lh: 1.4, fov: 40 });
   // two names: slow low orbit
-  add(a.satu + .2, { a: ANG.dpr - 14, r: 13.5, h: 3.2, la: ANG.dpr - 194, lr: 30, lh: -1.4, fov: 42 }, ease.inOut);
+  add(a.satu + .2, { a: ANG.dpr - 14, r: 11, h: 2.4, la: ANG.dpr - 194, lr: 30, lh: 1.5, fov: 42 }, ease.inOut);
   // 96 juta: rise over the hall and look out across the field of voters to the horizon (scale reveal)
   add(a.lama + .1, { a: ANG.dpr - 18, r: 6, h: 46, la: ANG.dpr - 198, lr: 160, lh: 0, fov: 52 }, ease.inOut);
   add(a.pengganti, { a: ANG.dpr - 20, r: 5, h: 48, la: ANG.dpr - 206, lr: 160, lh: 0, fov: 52 }, ease.lin);
   // 732: tilt down onto the lit seats, then drop outward to LO behind the fence
   add(a.n732 - .1, { a: ANG.lo, r: -14, h: 19, la: ANG.lo, lr: 9, lh: 0, fov: 52 }, ease.inOut);   // seats in view as the count starts
   add(a.lo - .6, { a: ANG.lo, r: -12.5, h: 17.5, la: ANG.lo, lr: 10, lh: 0, fov: 50 }, ease.lin);
-  add(a.lo - .05, { a: ANG.lo, r: 17, h: 2.4, la: ANG.lo, lr: 30, lh: 2.2, fov: 40 }, easeX.land);
-  add(a.end + 1, { a: ANG.lo, r: 18.4, h: 2.45, la: ANG.lo, lr: 30, lh: 2.25, fov: 36 }, ease.lin);
+  // land low among the lit seats: the 732 in the foreground, LO behind the fence
+  add(a.lo - .05, { a: ANG.lo, r: 15, h: 1.55, la: ANG.lo, lr: 30, lh: 1.75, fov: 42 }, easeX.land);
+  add(a.end + 1, { a: ANG.lo, r: 16.2, h: 1.55, la: ANG.lo, lr: 30, lh: 1.8, fov: 38 }, ease.lin);
   KEYS = k; return k;
 }
 export function camAt(t) {

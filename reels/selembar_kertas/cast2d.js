@@ -47,7 +47,7 @@ export function stamp(g, t, t0, x, y, text, o = {}) {
   g.lineWidth = 4; rrect(g, -pw / 2 + 14, -ph / 2 + 14, pw - 28, ph - 28, 8); g.stroke();
   g.fillStyle = col; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(text, 0, 6);
   if (k >= 1) { const B = Math.floor(t0 * 30); // splatter specks, fixed per stamp
-    for (let i = 0; i < 16; i++) { const a = hash(B + i) * 7, r = pw * .55 + hash(i + B * 2) * 90; g.beginPath(); g.arc(Math.cos(a) * r, Math.sin(a) * r * .6, 3 + hash(i * 3 + B) * 7, 0, 7); g.fill(); } }
+    for (let i = 0; i < 16; i++) { const a = hash(B + i) * 7, r = pw * .38 + hash(i + B * 2) * 40; g.beginPath(); g.arc(Math.cos(a) * r, Math.sin(a) * r * .45, 3 + hash(i * 3 + B) * 7, 0, 7); g.fill(); } }
   g.restore();
 }
 

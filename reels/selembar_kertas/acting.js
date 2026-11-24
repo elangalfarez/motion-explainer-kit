@@ -1,5 +1,5 @@
 // acting: the 2D role characters, one function per beat. Each returns [{fig, chip...}] for the chip pass.
-import { C, clamp, lerp, ease, prog, amp, rrect } from '../../vendor/toon.js';
+import { W, C, clamp, lerp, ease, prog, amp, rrect } from '../../vendor/toon.js';
 import { twos, easeX, antic, arrive } from '../../vendor/toon2.js';
 import { proj } from './world3d.js';
 import { ANG, polar } from './set.js';
@@ -13,8 +13,8 @@ const at = (aDeg, r) => polar(aDeg, r);
 
 function hookVP(g, t, tc, a) {          // the VP stands by the chair, then walks off on "mundur"
   if (t > a.cerita + .6) return [];
-  const w = prog(t, a.mundur + .1, a.mundur + 1.6, ease.in), ad = antic(tc, a.mundur, .5), wp = walkPose(tc);
-  const f = figure(g, -1.05 - w * 5, 1.5, 1.4, { ...WAPRES, sq: ad.sq, legL: w > 0 ? wp.legL : 0, legR: w > 0 ? wp.legR : 0, lookX: -.8, blink: blinkAt(tc, 1), brow: 1, smile: -.2 }, 3);
+  const w = prog(t, a.mundur - .25, a.mundur + .75, ease.in), ad = antic(tc, a.mundur - .25, .5), wp = walkPose(tc);   // already turning away by 0.3 s
+  const f = figure(g, -1.05 - w * 5, 1.5, 1.4, { ...WAPRES, sq: ad.sq, legL: w > 0 ? wp.legL : 0, legR: w > 0 ? wp.legR : 0, lookX: -.8 * prog(tc, .25, .45), blink: blinkAt(tc, 1), brow: 1, smile: -.2 }, 3);
   return [{ f, text: 'WAPRES', t0: .05, t1: a.mundur + .9 }];
 }
 function judgeMK(g, t, tc, a) {         // points at the gate on "buka"
@@ -36,7 +36,7 @@ function walker(g, t, tc, a) {          // WALI KOTA -> CAWAPRES -> WAPRES: thro
 }
 function advokat(g, t, tc, a) {         // walks in holding the paper, raises it on "menggugat"
   if (t < a.tapi - .4 || t > a.oktober + .3) return [];
-  const k = prog(t, a.tapi - .4, a.advokat + .3, easeX.land), p = at(ANG.street + lerp(7, .5, k), 38), raise = prog(tc, a.gugat - .15, a.gugat + .15, ease.out), wp = walkPose(tc);
+  const k = prog(t, a.tapi - .4, a.advokat + .3, easeX.land), p = at(ANG.street + lerp(4, .5, k), 38), raise = prog(tc, a.gugat - .15, a.gugat + .15, ease.out), wp = walkPose(tc);
   const f = figure(g, p[0], 0, p[2], { kind: 'suit', hair: 'side', shirt: '#6F6B66', tie: C.ink, legL: k < 1 ? wp.legL : 0, legR: k < 1 ? wp.legR : 0, brow: -1, smile: -.3,
     lookX: .5, blink: blinkAt(tc, 4), hlx: -30, hly: 95, hrx: 40 + raise * 30, hry: 70 - raise * 220 }, 7);
   if (f) heldDoc(g, f, raise);
@@ -81,13 +81,13 @@ function lo(g, t, tc, a) {              // LO outside the fence, hands on the ra
 }
 function rails(g) {                     // the fence rails drawn over LO, so he reads as outside it
   for (const y of [.55, 1.12]) {
-    const p0 = proj(...polar(ANG.lo - 9, 22.5, y)), p1 = proj(...polar(ANG.lo + 9, 22.5, y));
+    const p0 = proj(...polar(ANG.lo - 3.5, 22.5, y)), p1 = proj(...polar(ANG.lo + 3.5, 22.5, y));
     g.save(); g.lineCap = 'round'; g.strokeStyle = C.ink; g.lineWidth = 16 * (p0[3] / 120); g.beginPath(); g.moveTo(p0[0], p0[1]); g.lineTo(p1[0], p1[1]); g.stroke(); g.restore();
   }
 }
 
 const BEATS = [hookVP, judgeMK, walker, advokat, judgeMA, leavesVP, nominees, lo];
 export function cast(g, t) {
-  const a = anchors(), tc = twos(t), chips = BEATS.flatMap(b => b(g, t, tc, a)).filter(o => o.f);
+  const a = anchors(), tc = twos(t), chips = BEATS.flatMap(b => b(g, t, tc, a)).filter(o => o.f && o.f.x > 40 && o.f.x < W - 40);   // no chip for a figure that has left the frame
   for (const o of chips) chip(g, t, o.t0, o.t1, o.f.x, o.f.top - 46 * clamp(o.f.s * 3, .7, 1.4), o.text, { size: (o.size ?? 40) * clamp(o.f.s * 2.4, .9, 1.3) });
 }

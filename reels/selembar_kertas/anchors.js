@@ -9,8 +9,8 @@ export function anchors() {
     y2023: T('2023'), mk: T('MK'), buka: T('buka'), di40: T('40'), asal: T('asal'), rakyat: T('rakyat'),
     sembilan: T('Sembilan'), wali: T('Wali'), u36: T('36'), daftar: T('daftar'),
     menang: T('Menang'), juta1: T('96 juta'), suara1: T('suara'),
-    tapi: T('Tapi'), advokat: T('advokat'), gugat: T('menggugat'), oktober: T('30 Oktober'), batal: T('membatalkannya'), kata: T('Kata'), bukti: T('bukti'), ketemu: T('ketemu'),
-    lalu: T('Lalu'), n120: T('120'), anggota: T('anggota'), teken: T('teken'), pintu2: T('pintu', 2), makzul: T('pemakzulan'),
+    tapi: T('Tapi'), advokat: T('advokat'), gugat: T('menggugat'), oktober: T('30 Oktober'), batal: T('membatalkannya'), kata: T('Kata'), bukti: T('bukti'), nggak1: T('nggak'), ketemu: T('ketemu'),
+    lalu: T('Lalu'), n120: T('120'), anggota: T('anggota'), teken: T('teken'), pintu2: T('pintu', 2), makzul: T('pemakzulan'), hak: T('hak'),
     nov: T('12 November'), sebelum: T('sebelum'), mundur2: T('mundur', 2), tanpa: T('Tanpa'),
     sekarang: T('Sekarang'), dua: T('dua'), mpr: T('MPR'), pilih: T('pilih'), satu: T('satu'),
     juta2: T('96 juta', 2), lama: T('lama'), pengganti: T('Penggantinya'), n732: T('732'), lo: T('Lo'), termasuk: T('termasuk'), end: E('termasuk') };
