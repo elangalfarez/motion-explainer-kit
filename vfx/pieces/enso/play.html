@@ -1,0 +1,102 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Ensō That Won't Close</title>
+<style>
+html,body{margin:0;height:100%;background:#0b0806;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;overscroll-behavior:none}
+#c{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;display:block;opacity:0;transition:opacity 1.2s}
+#c.on{opacity:1}
+#hint{position:fixed;left:50%;bottom:calc(3vh + env(safe-area-inset-bottom));transform:translateX(-50%);font:600 13px/1 ui-sans-serif,system-ui,-apple-system,sans-serif;letter-spacing:.3em;
+  text-transform:uppercase;color:rgba(38,27,18,.78);transition:opacity .8s;pointer-events:none;white-space:nowrap;text-shadow:0 0 12px rgba(240,230,210,.7)}
+#hint.light{color:rgba(255,214,170,.82);text-shadow:0 0 12px rgba(0,0,0,.6)}
+#hint.off{opacity:0}
+#cue{position:fixed;left:0;top:0;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;pointer-events:none;border:1.5px solid rgba(40,28,18,.55);opacity:0;transition:opacity .6s}
+#cue.on{opacity:1;animation:pulse 2.8s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.55);opacity:0}25%{opacity:.9}100%{transform:scale(1.5);opacity:0}}
+</style></head><body>
+<canvas id="c"></canvas><div id="cue"></div><div id="hint" class="off">drag the tail to close it</div>
+<script src="enso.js"></script>
+<script>
+(function(){
+const C=document.getElementById('c'),X=C.getContext('2d'),hint=document.getElementById('hint');
+Enso.init(); requestAnimationFrame(()=>C.classList.add('on'));
+const {G,cl,ss,noise1,TOUCH,T_S1,CX,CY}=Enso;
+let VW=1920,VH=1080,CAM={z:1,fx:CX,fy:CY},resK=1,dtAcc=0,dtN=0;
+function resize(){const dpr=Math.min(window.devicePixelRatio||1,2);let w=innerWidth*dpr,h=innerHeight*dpr;const k=Math.min(1,1920/Math.max(w,h))*resK;
+  VW=Math.max(2,Math.round(w*k));VH=Math.max(2,Math.round(h*k));C.width=VW;C.height=VH;
+  // keep the whole ensō + slit inside safe bounds in any aspect
+  const z=Math.min(VW/1060,VH/(VW<VH?1150:1000));CAM={z,fx:CX+(G.x-CX)*0.12,fy:CY+(G.y-CY)*0.12};}
+addEventListener('resize',resize);resize();
+let phase='paint',clock=0,last=performance.now(),touchClock=0,used=false,cooledAt=0;
+let pend=false,reach=0,vel=0,dragging=false,ptr=null,hover=0,spat=Enso.SPAT_FILM.slice(0,5),twAt=0;
+const baseState=()=>({cam:{z:CAM.z,fx:CAM.fx,fy:CAM.fy,sx:0,sy:0,rot:0}});
+function toWorld(ev){const r=C.getBoundingClientRect();return Enso.screenToWorld(baseState(),(ev.clientX-r.left)*VW/r.width,(ev.clientY-r.top)*VH/r.height,VW,VH);}
+function toClient(p){const r=C.getBoundingClientRect(),s=Enso.worldToScreen(baseState(),p.x,p.y,VW,VH);return{x:r.left+s.x*r.width/VW,y:r.top+s.y*r.height/VH};}
+const wrap=a=>{while(a>Math.PI)a-=2*Math.PI;while(a<-Math.PI)a+=2*Math.PI;return a;};
+const T0=Enso.tipPos('T',0),T1=Enso.tipPos('T',1),A0T=Math.atan2(T0.y-CY,T0.x-CX),SPT=wrap(Math.atan2(T1.y-CY,T1.x-CX)-A0T);
+function rawReach(p){const a=Math.atan2(p.y-CY,p.x-CX);return wrap(a-A0T)/SPT;}
+function near(p){const T=Enso.tipPos('T',0),dT=Math.hypot(p.x-T.x,p.y-T.y),dG=Math.hypot(p.x-G.x,p.y-G.y);
+  const rr=Math.hypot(p.x-CX,p.y-CY),r=rawReach(p);return dT<240||dG<240||(r>-0.4&&r<1.2&&Math.abs(rr-Enso.R)<190);}
+addEventListener('pointermove',ev=>{ptr=toWorld(ev);});
+addEventListener('pointerdown',ev=>{audio();ptr=toWorld(ev);
+  if(phase==='cooled'||(phase==='tear'&&clock-touchClock>2.4)){reset();return;}
+  if(phase==='paint'&&near(ptr)){pend=true;used=true;hint.classList.add('off');try{C.setPointerCapture(ev.pointerId)}catch(e){}return;}
+  if(phase==='idle'&&near(ptr)){dragging=true;used=true;hint.classList.add('off');try{C.setPointerCapture(ev.pointerId)}catch(e){}}});
+const up=()=>{pend=false;if(!dragging)return;dragging=false;if(phase==='idle'){recoilSpatter(reach);vel=-2.5*reach;snap(reach);}};
+addEventListener('pointerup',up);addEventListener('pointercancel',up);
+addEventListener('keydown',e=>{if(e.key==='r'||e.key==='R')reset();});
+function reset(){phase='paint';clock=0;reach=0;vel=0;spat=Enso.SPAT_FILM.slice(0,5);hint.classList.add('off');hint.classList.remove('light');hint.textContent='drag the tail to close it';}
+function recoilSpatter(r){if(r<0.25)return;const R=Enso.rng((clock*1000)|0),tg=Enso.tangent(1),p=Enso.tipPos('T',r*0.85),n=(4+r*9)|0;
+  for(let i=0;i<n;i++){const a=Math.atan2(-tg.ty,-tg.tx)+(R()-.5)*1.0,v=(70+170*r)*(.4+.8*R());
+    spat.push({t0:clock,x:p.x+(R()-.5)*8,y:p.y+(R()-.5)*8,vx:Math.cos(a)*v,vy:Math.sin(a)*v,r:1.3+3.2*R()*R(),seed:R()*100});}
+  if(spat.length>90)spat.splice(5,spat.length-90);}
+// ---- soft synth (starts on first gesture) ----
+let ac=null,hum,humG,whine,whG,master;
+function audio(){if(ac)return;try{ac=new (window.AudioContext||window.webkitAudioContext)();master=ac.createGain();master.gain.value=.7;master.connect(ac.destination);
+  hum=ac.createOscillator();hum.type='sine';hum.frequency.value=50;humG=ac.createGain();humG.gain.value=0;hum.connect(humG).connect(master);hum.start();
+  whine=ac.createOscillator();whine.type='sine';whine.frequency.value=700;whG=ac.createGain();whG.gain.value=0;whine.connect(whG).connect(master);whine.start();}catch(e){ac=null}}
+function noiseHit(dur,f0,f1,g,type='lowpass'){if(!ac)return;const n=(ac.sampleRate*dur)|0,b=ac.createBuffer(1,n,ac.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,2);
+  const s=ac.createBufferSource();s.buffer=b;const f=ac.createBiquadFilter();f.type=type;f.frequency.setValueAtTime(f0,ac.currentTime);f.frequency.exponentialRampToValueAtTime(f1,ac.currentTime+dur);
+  const G2=ac.createGain();G2.gain.value=g;s.connect(f).connect(G2).connect(master);s.start();}
+function snap(r){if(r>.25)noiseHit(.08,3500,900,.12*r,'bandpass');}
+function boom(){if(!ac)return;const o=ac.createOscillator(),g=ac.createGain();o.frequency.setValueAtTime(85,ac.currentTime);o.frequency.exponentialRampToValueAtTime(34,ac.currentTime+.7);
+  g.gain.setValueAtTime(.28,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+1);o.connect(g).connect(master);o.start();o.stop(ac.currentTime+1.1);noiseHit(.45,3000,400,.1);noiseHit(.3,5000,1500,.05,'bandpass');}
+// ---- state ----
+function camOf(st,shk){return{z:CAM.z,fx:CAM.fx,fy:CAM.fy,sx:st?st.cam.sx*CAM.z:noise1(clock*37)*shk,sy:st?st.cam.sy*CAM.z:noise1(clock*41+7)*shk,rot:st?st.cam.rot:0};}
+function stateNow(){
+  if(phase==='paint'||phase==='idle'){
+    const st=Enso.filmState(Math.min(clock,T_S1+0.5));
+    st.t=clock;st.spatter=spat;st.wide=true;st.forceBody=false;st.fade=0;
+    const cyc=(clock-twAt)%2.8,tw=phase==='idle'&&!dragging&&!used?0.16*Math.pow(Math.max(0,Math.sin(cyc/2.8*Math.PI*2)),10):0;
+    const r=reach+tw+hover*0.09*(dragging?0:1);
+    st.reachT=r;st.reachH=r>0.45?(r-0.45)/0.55:(r<0?r*0.6:0);st.velT=vel;st.velH=vel*0.6;
+    st.strain=cl(r);st.spark=0;st.glow=0;st.dim=0.06+0.42*cl(r);
+    const shk=r>.85?2.2*(r-.85)/.15:0;st.cam=camOf(null,shk*CAM.z);
+    return st;}
+  const tf=phase==='tear'?TOUCH+(clock-touchClock):9.9;
+  const st=Enso.filmState(Math.min(tf,9.9));
+  st.cam=camOf(st,0);st.t=clock;st.spatter=spat;st.fade=0;st.wide=true;st.forceBody=false;const age=clock-touchClock,late=phase==='cooled'||age>1.2;st.bodyEvery=late?5:3;st.endsEvery=late?4:2;st.tearEvery=late?3:2;st.glowEvery=late?3:2;
+  if(phase==='cooled')st.heat=Math.max(st.heat,.2+.05*Math.sin(clock*2));
+  return st;}
+function frame(now){
+  const dt=Math.min(.05,(now-last)/1000);last=now;clock+=pend&&phase==='paint'?dt*4:dt; // a finger that lands during the stroke fast-forwards it and takes hold
+  // dynamic resolution: keep the frame budget on slower devices (CSS upscales the canvas)
+  dtAcc+=dt;dtN++;if(dtN>=30){const avg=dtAcc/dtN;dtAcc=0;dtN=0;
+    if(avg>0.021&&resK>0.62){resK=Math.max(0.62,resK*0.85);resize();}else if(avg<0.0175&&resK<1&&phase!=='tear'){resK=Math.min(1,resK/0.9);resize();}}
+  if(phase==='paint'&&clock>T_S1+0.5){phase='idle';twAt=clock;if(pend){pend=false;dragging=true;}if(!used)hint.classList.remove('off');}
+  if(phase==='idle'){
+    const hv=!dragging&&ptr&&near(ptr)?1:0;hover+=(hv-hover)*Math.min(1,dt*6);
+    if(dragging&&ptr){const target=cl(rawReach(ptr),-0.2,1.15),res=1-0.3*cl(reach);const nr=reach+(target-reach)*Math.min(1,dt*16)*res;vel=(nr-reach)/Math.max(dt,1e-3);reach=nr;
+      if(reach>=0.985){phase='tear';touchClock=clock-(TOUCH-6.58);dragging=false;hint.classList.add('off');boom();spat=spat.concat(Enso.SPAT_FILM.filter(s=>s.t0>Enso.TEAR_T).map(s=>Object.assign({},s,{t0:s.t0-TOUCH+touchClock})));}}
+    else{const k=170,c=7;vel+=(-k*reach-c*vel)*dt;reach+=vel*dt;if(Math.abs(reach)<1e-3&&Math.abs(vel)<1e-2){reach=0;vel=0;}}}
+  if(phase==='tear'&&clock-touchClock>3.6){phase='cooled';cooledAt=clock;hint.textContent='tap to paint again';hint.classList.add('light');hint.classList.remove('off');}
+  if(ac){const s=phase==='idle'?Math.max(0,reach):0;humG.gain.setTargetAtTime(.1*s*s,ac.currentTime,.05);hum.frequency.setTargetAtTime(46+28*s,ac.currentTime,.05);
+    whG.gain.setTargetAtTime(.015*Math.max(0,s-.6)/.4,ac.currentTime,.05);whine.frequency.setTargetAtTime(600+700*s,ac.currentTime,.05);}
+  const cue=document.getElementById('cue'),showCue=phase==='idle'&&!used&&!dragging;cue.classList.toggle('on',showCue);
+  if(showCue){const c=toClient(Enso.tipPos('T',0.05));cue.style.left=c.x+'px';cue.style.top=c.y+'px';}
+  Enso.draw(X,stateNow());
+  requestAnimationFrame(frame);}
+window.__enso={get phase(){return phase},get reach(){return reach},get size(){return[VW,VH]},
+  client(which,r=0){return toClient(which==='G'?G:Enso.tipPos(which,r));}};
+requestAnimationFrame(frame);
+})();
+</script></body></html>

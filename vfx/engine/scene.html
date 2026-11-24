@@ -1,0 +1,48 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style></head>
+<body><canvas id="c" width="1920" height="1080"></canvas>
+<script src="vfx_core.js"></script>
+<script>
+// ============================================================
+//  STARTER SCENE (4s) — the Scarlet Sheath grammar in miniature:
+//  paper · ink lines GATHER into a focus · brush ring draws on ·
+//  spike-burst cut to dark · glowing gather + flare · hit (shake +
+//  inversion) · halftone dissolve back to paper.
+//  Replace the shot list with keys MEASURED from your reference.
+// ============================================================
+const FX=960,FY=540;
+HITS=[[1.0,26],[2.2,30]];
+const INVERT=[[2.2,2.217]];
+function paper(){X.fillStyle=PAPER;X.fillRect(0,0,W,H);X.fillStyle=gridPat;X.fillRect(0,0,W,H)}
+function dark(){X.fillStyle='#0b090c';X.fillRect(0,0,W,H);X.fillStyle=darkDots;X.fillRect(0,0,W,H)}
+function shotPaper(t){
+  paper();
+  gatherLines(t,0,FX,FY,90,'ink',1,1.2);
+  const k=eOut(seg(t,.35,.95));brushRing(FX,FY,260,46,-Math.PI/2,-Math.PI/2+k*TAU,1);
+  if(t>.9){const k2=seg(t,.9,1.0);X.save();X.fillStyle='#0b080a';X.beginPath();X.rect(0,0,W,H);
+    const P=spikeStar(FX,FY,lerp(1500,1050,k2),lerp(2400,1500,k2),26,9);P.reverse();P.forEach((p,i)=>i?X.lineTo(p[0],p[1]):X.moveTo(p[0],p[1]));X.closePath();X.fill('evenodd');X.restore()}
+}
+function shotDark(t){
+  dark();
+  gatherLines(t,1.0,FX,FY,110,t>1.9?'hot':'glow',1,1.6);
+  const a=clamp(seg(t,1.0,1.3));brushRing(FX,FY,300,40,0,TAU,a*.9,.6);
+  flare(FX,FY,60+40*eIn(seg(t,1.4,2.2)),t,1,seg(t,2.0,2.2));
+}
+function shotDissolve(t){
+  shotDark(2.19); // frozen dark layer
+  tmpX.globalCompositeOperation='copy';tmpX.drawImage(C,0,0);
+  paper();
+  const p=lerp(.1,1.08,seg(t,2.35,3.4));
+  halftoneDissolve(tmpC,(x,y)=>clamp(.5+.5*noise1(x*.004+y*.007)+.2*noise1(x*.013-y*.011+9)),p);
+}
+function render2(t){
+  X.setTransform(1,0,0,1,0,0);X.globalAlpha=1;X.globalCompositeOperation='source-over';
+  const[sx,sy,sr]=shake(t);X.setTransform(1.03,0,0,1.03,-W*.015+sx,-H*.015+sy);
+  let bl=0;
+  if(t<1.0)shotPaper(t); else if(t<2.2){shotDark(t);bl=.5} else shotDissolve(t);
+  X.setTransform(1,0,0,1,0,0);bloom(bl);if(bl)vignette(.5);
+  for(const[a,b]of INVERT)if(t>=a&&t<b)invertFrame();
+}
+window.DUR=4;
+</script></body></html>

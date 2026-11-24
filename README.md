@@ -40,6 +40,7 @@ works best with your own repo from step 1.)
 | `vendor/` | the drawing engines (toon rig, motion layer, 3D hero), Three.js, fonts |
 | `examples/` | 6 complete reels you can render without any API key |
 | `.claude/` | the finish gate (Claude can't say "done" until the judge scores pass) + the skill |
+| `vfx/` | text-free pure-code VFX films (sword sheath, late cut, shadow, ensō, ink): playbook, engine, judge, gate, full source of every piece |
 | `setup.sh` | installs tools and clones the reference skills (lemo-opuscar & co.) |
 
 ## The styles
