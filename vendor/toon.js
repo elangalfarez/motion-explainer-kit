@@ -231,8 +231,8 @@ export function captions(g, t, o = {}) {
   if (!c) return;
   g.save(); g.font = `900 ${size}px ${C.font}`; g.textBaseline = 'middle'; g.lineJoin = 'round';
   const sp = size * .3, ws = c.map(w => g.measureText(w.w).width), tw = ws.reduce((a, b) => a + b, 0) + sp * (c.length - 1);
-  const pop = prog(t, c[0].s - .08, c[0].s + .12, ease.outBack);
-  g.translate(W / 2, y); g.scale(.85 + .15 * pop, .85 + .15 * pop); g.translate(-W / 2, -y);
+  const pop = prog(t, c[0].s - .08, c[0].s + .12, ease.outBack), fit = Math.min(1, (o.maxW ?? W - 90) / (tw + 16));   // long words shrink to fit the frame
+  g.translate(W / 2, y); g.scale((.85 + .15 * pop) * fit, (.85 + .15 * pop) * fit); g.translate(-W / 2, -y);
   let x = W / 2 - tw / 2;
   c.forEach((w, i) => { const act = t >= w.s - .03 && t < w.e + .05, on = t >= w.s - .03;
     g.save(); g.translate(x + ws[i] / 2, y); if (act) { g.rotate(-.03); g.scale(1.08, 1.08); }

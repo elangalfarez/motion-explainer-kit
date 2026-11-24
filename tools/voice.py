@@ -51,11 +51,27 @@ def tts(text, voice_id, model, out):
     out.write_bytes(r.content)
 
 
-def load(f, tempo=1.0):
+def load(f, tempo=1.0, max_pause=None):
     af = ["-af", f"atempo={tempo}"] if tempo != 1 else []
     raw = subprocess.run(["ffmpeg", "-v", "quiet", "-i", str(f), *af, "-ac", "1", "-ar", str(SR), "-f", "f32le", "-"],
                          capture_output=True, check=True).stdout
-    return np.frombuffer(raw, np.float32).copy()
+    a = np.frombuffer(raw, np.float32).copy()
+    return squeeze_pauses(a, max_pause) if max_pause else a
+
+
+def squeeze_pauses(a, max_pause, th_db=-38, keep=.15):
+    """Shorten every run quieter than th_db and longer than max_pause to 2*keep seconds (a slow read runs long).
+    ffmpeg silenceremove saved ~1 s of a measured ~7 s here, so the cut is done directly on the samples."""
+    hop = int(.01 * SR); e = np.array([np.sqrt(np.mean(a[i:i + hop] ** 2)) for i in range(0, len(a) - hop, hop)])
+    quiet = 20 * np.log10(e + 1e-9) < th_db; out, i0, k = [], 0, 0
+    while k < len(quiet):
+        if not quiet[k]: k += 1; continue
+        j = k
+        while j < len(quiet) and quiet[j]: j += 1
+        if (j - k) * hop / SR > max_pause and k > 0 and j < len(quiet):
+            out.append(a[i0:k * hop + int(keep * SR)]); i0 = j * hop - int(keep * SR)
+        k = j
+    out.append(a[i0:]); return np.concatenate(out)
 
 
 def trim(a):  # cut leading/trailing silence by energy; keep a 0.45 s tail so the last word is never clipped
@@ -76,27 +92,55 @@ def align_eleven(wav, text):
     return [(w["text"], w["start"], w["end"]) for w in j["words"] if norm(w["text"])], j.get("loss")
 
 
-def align_whisper(wav, text, lang):
+def align_whisper(wav, text, lang, toks=None):
+    """Word times from faster-whisper. Whisper writes numbers as digits and misspells names, so with toks
+    [(display, spoken)] it aligns against the DISPLAY tokens with fuzzy character matching (global DP), then
+    spreads each token's time over its spoken words."""
     from faster_whisper import WhisperModel  # pip install faster-whisper; needs huggingface.co reachable
     import difflib
+    import numpy as np
     m = WhisperModel("small", device="cpu", compute_type="int8")
     # decode with ffmpeg ourselves: faster-whisper's PyAV path breaks on PyAV >= 15 (metadata_errors kwarg)
-    import numpy as np
     pcm = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(wav), "-f", "s16le", "-ac", "1", "-ar", "16000", "-"],
                          capture_output=True, check=True).stdout
     audio = np.frombuffer(pcm, np.int16).astype(np.float32) / 32768.0
-    segs, _ = m.transcribe(audio, language=lang, word_timestamps=True, beam_size=5, initial_prompt=text[:200])
-    heard = [(w.word.strip(), w.start, w.end) for s in segs for w in s.words if norm(w.word)]
-    target = [w for w in text.split() if norm(w)]
-    sm = difflib.SequenceMatcher(None, [norm(w) for w in target], [norm(h[0]) for h in heard], autojunk=False)
-    tmap = {b.a + j: b.b + j for b in sm.get_matching_blocks() for j in range(b.size)}
-    out = []
-    for i, w in enumerate(target):  # words whisper missed get interpolated between neighbours
-        if i in tmap: out.append((w, heard[tmap[i]][1], heard[tmap[i]][2])); continue
-        p = out[-1][2] if out else 0.0
-        n = next((heard[tmap[k]][1] for k in range(i + 1, len(target)) if k in tmap), p + .3)
-        out.append((w, p, max(p + .05, n)))
-    print(f"whisper match ratio {sm.ratio():.3f} (below 0.9: fix numbers/brand names, re-run)")
+    segs, _ = m.transcribe(audio, language=lang, word_timestamps=True, beam_size=5)  # no prompt: it pushes whisper to spell some numbers out, others not
+    heard = [(norm(w.word), float(w.start), float(w.end)) for s in segs for w in s.words if norm(w.word)]
+    toks = toks or [(w, w) for w in text.split()]
+    # one target per SPOKEN word; each also accepts its token's display form ("96", "2023", "SMA"), because whisper
+    # writes some numbers as digits and spells others out
+    sub = []
+    for ti, (d, sp) in enumerate(toks):
+        alt = {norm(d)} | {norm(x) for x in d.split()}
+        sub += [(ti, {norm(w)} | alt) for w in sp.split() if norm(w)]
+    sim = lambda forms, b: max(difflib.SequenceMatcher(None, f, b).ratio() for f in forms if f)
+    n, k, GAP = len(sub), len(heard), -0.45
+    S = np.zeros((n + 1, k + 1)); S[1:, 0] = GAP * np.arange(1, n + 1); S[0, 1:] = GAP * np.arange(1, k + 1)
+    for i in range(1, n + 1):
+        for j in range(1, k + 1):
+            S[i, j] = max(S[i - 1, j - 1] + (sim(sub[i - 1][1], heard[j - 1][0]) * 2 - 1), S[i - 1, j] + GAP, S[i, j - 1] + GAP)
+    hit, i, j, good = {}, n, k, 0
+    while i > 0 and j > 0:
+        sc = sim(sub[i - 1][1], heard[j - 1][0])
+        if S[i, j] == S[i - 1, j - 1] + (sc * 2 - 1):
+            if sc >= .5: hit[i - 1] = j - 1; good += 1
+            i, j = i - 1, j - 1
+        elif S[i, j] == S[i - 1, j] + GAP: i -= 1
+        else: j -= 1
+    span = {}
+    for si, (ti, _) in enumerate(sub):
+        if si in hit: h = heard[hit[si]]; a, b = span.get(ti, (h[1], h[2])); span[ti] = (min(a, h[1]), max(b, h[2]))
+    out, last = [], 0.0
+    for ti, (d, sp) in enumerate(toks):  # unmatched tokens are interpolated between matched neighbours
+        if ti in span: s0, e0 = span[ti]
+        else:
+            nxt = next((span[x][0] for x in range(ti + 1, len(toks)) if x in span), last + .4)
+            s0, e0 = last, max(last + .05, nxt - .02)
+        ws = [w for w in sp.split() if norm(w)] or [sp]
+        for q, w in enumerate(ws):
+            out.append((w, s0 + (e0 - s0) * q / len(ws), s0 + (e0 - s0) * (q + 1) / len(ws)))
+        last = e0
+    print(f"whisper matched {good}/{n} spoken words ({good / max(1, n):.2f}; below 0.9: check names/numbers)")
     return out, None
 
 
@@ -105,6 +149,7 @@ def main():
     ap.add_argument("dir"); ap.add_argument("--takes", type=int, default=3); ap.add_argument("--take", type=int)
     ap.add_argument("--tempo", type=float, default=1.1, help="Will reads slowly: 1.1-1.2 feels like a reel")
     ap.add_argument("--own-vo"); ap.add_argument("--aligner", choices=["eleven", "whisper"], default="eleven")
+    ap.add_argument("--max-pause", type=float, help="shorten silences longer than this (s) to 0.3 s")
     a = ap.parse_args()
     D = Path(a.dir); cfg = json.loads((D / "script.json").read_text())
     toks = [(pi, d, s) for pi, p in enumerate(cfg["passages"]) for d, s in parse(p)]
@@ -132,9 +177,9 @@ def main():
         src, tempo = files[pick], a.tempo
         print("using", src.name, "of", [f.name for f in files], "(listen to all; --take N to override)")
 
-    vo = trim(load(src, tempo))
+    vo = trim(load(src, tempo, a.max_pause))
     sf.write(D / "voice.wav", vo, SR); sf.write(D / "mix.wav", vo, SR)
-    words, loss = align_eleven(D / "voice.wav", spoken) if a.aligner == "eleven" else align_whisper(D / "voice.wav", spoken, cfg.get("lang", "id"))
+    words, loss = align_eleven(D / "voice.wav", spoken) if a.aligner == "eleven" else align_whisper(D / "voice.wav", spoken, cfg.get("lang", "id"), [(d, sp) for _, d, sp in toks])
 
     out, k = [], 0  # map aligned spoken words back onto DISPLAY tokens
     for pi, d, s in toks:

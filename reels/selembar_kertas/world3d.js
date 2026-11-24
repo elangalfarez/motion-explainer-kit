@@ -79,6 +79,11 @@ export function proj(x, y, z) {
   U.set(x, y + 1, z).project(CAM); const py = (1 - U.y) / 2 * H;
   return [sx, sy, d, Math.abs(sy - py)];
 }
+// fog that scales with the shot (a high crane would otherwise fade the whole city into paper)
+export function setFog(near, far) {
+  S.fog.near = near; S.fog.far = far;
+  for (const o of OUTLINES) { o.material.uniforms.fogNear.value = near; o.material.uniforms.fogFar.value = far; }
+}
 export function renderWorld(g, t) {
   const B = Math.floor(t * 12); // line boil at 12 fps, like the 2D characters
   for (const o of OUTLINES) o.material.uniforms.thick.value = o.userData.base * (1 + (hash(B * 3.1 + o.id) - .5) * .22);

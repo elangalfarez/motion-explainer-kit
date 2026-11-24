@@ -20,6 +20,7 @@ export function chip(g, t, t0, t1, x, y, text, o = {}) {
   if (k <= .002 || out >= .999) return;
   const size = o.size ?? 40;
   g.save(); g.font = `900 ${size}px ${C.font}`; const tw = g.measureText(text).width, pw = tw + size * 1.1, ph = size * 1.55;
+  x = Math.min(W - pw / 2 - 24, Math.max(pw / 2 + 24, x));   // never clipped by the frame edge
   g.translate(x, y - out * 30); const s = lerp(1.7, 1, k) * (1 - out * .3); g.scale(s, s); g.globalAlpha = Math.min(1, k * 3) * (1 - out);
   rrect(g, -pw / 2 + 6, -ph / 2 + 7, pw, ph, ph / 2); g.fillStyle = C.ink; g.fill();
   rrect(g, -pw / 2, -ph / 2, pw, ph, ph / 2); g.fillStyle = o.fill ?? C.white; g.fill(); g.lineWidth = 6; g.strokeStyle = C.ink; g.stroke();
