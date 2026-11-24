@@ -7,7 +7,7 @@
   "drift": -0.1
  },
  "last_word_present": true,
- "film_duration": 56.0,
+ "film_duration": 55.867,
  "rows": [
   {
    "w": "Wapres",
@@ -450,8 +450,8 @@
   {
    "w": "pendapat:",
    "caption": 38.1,
-   "audio": 38.1,
-   "drift": 0.0
+   "audio": 38.12,
+   "drift": 0.02
   },
   {
    "w": "pintu",
@@ -582,8 +582,8 @@
   {
    "w": "memilih",
    "caption": 50.06,
-   "audio": 50.06,
-   "drift": 0.0
+   "audio": 50.08,
+   "drift": 0.02
   },
   {
    "w": "wapres",
@@ -606,8 +606,8 @@
   {
    "w": "dipilih",
    "caption": 52.1,
-   "audio": 52.1,
-   "drift": 0.0
+   "audio": 52.12,
+   "drift": 0.02
   },
   {
    "w": "732",
