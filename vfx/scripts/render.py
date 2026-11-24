@@ -6,12 +6,21 @@ usage:
 Scene contract: <canvas id="c">, window.render(t) draws frame t, optional window.DUR, window.MBK = motion-blur subframes.
 First run in a fresh sandbox: `uv run --with playwright python -m playwright install chromium`.
 """
-import sys, subprocess, base64, time, pathlib, argparse
+import os, sys, subprocess, base64, time, pathlib, argparse
 from playwright.sync_api import sync_playwright
 
 
+def chrome():
+    # Same lookup as tools/render.py: a system Chrome avoids a Playwright/browser version mismatch.
+    c = os.environ.get("CHROME_PATH")
+    if c and pathlib.Path(c).exists(): return c
+    for c in ["/usr/bin/google-chrome", "/usr/bin/chromium", "/usr/bin/chromium-browser"]:
+        if pathlib.Path(c).exists(): return c
+    return None
+
+
 def open_page(p, scene, mbk):
-    b = p.chromium.launch(args=["--disable-web-security", "--allow-file-access-from-files"])
+    b = p.chromium.launch(executable_path=chrome(), args=["--disable-web-security", "--allow-file-access-from-files"])
     pg = b.new_page(viewport={"width": 1920, "height": 1080})
     pg.on("console", lambda m: print("JS:", m.text))
     pg.on("pageerror", lambda e: print("PAGEERR:", e))

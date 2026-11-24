@@ -7,3 +7,5 @@ reels/.gate_blocks
 **/clip.mp4
 **/takes/
 __pycache__/
+calib/
+examples/*/stills/
