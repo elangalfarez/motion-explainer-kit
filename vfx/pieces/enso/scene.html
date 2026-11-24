@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style></head>
+<body><canvas id="c" width="1920" height="1080"></canvas>
+<script src="enso.js"></script>
+<script>
+const C=document.getElementById('c'),X=C.getContext('2d');
+const acc=document.createElement('canvas');acc.width=1920;acc.height=1080;const AX=acc.getContext('2d');
+const t0=performance.now();Enso.init();console.log('bake ms',Math.round(performance.now()-t0));
+window.DUR=Enso.DUR;
+window.render=function(t){
+  const k=window.MBK||1;
+  if(k<=1){Enso.draw(X,Enso.filmState(t));return;}
+  // shutter 180deg, clamp across the tear hit so the hit frame stays crisp
+  AX.clearRect(0,0,1920,1080);
+  for(let i=0;i<k;i++){let tt=t+(i/k)*(0.5/60);
+    if(t<Enso.TEAR_T&&tt>=Enso.TEAR_T)tt=Enso.TEAR_T-1e-4;
+    Enso.draw(X,Enso.filmState(tt));AX.globalAlpha=1/(i+1);AX.drawImage(C,0,0);}
+  AX.globalAlpha=1;X.drawImage(acc,0,0);
+};
+</script></body></html>

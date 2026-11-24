@@ -1,0 +1,11 @@
+# Lessons (append; newest last)
+- Reproduce motion, not objects. Measure, never eyeball. 60fps/deterministic is not a visual pass.
+- Check particle DIRECTION in strips (gather vs orbit was caught in seconds by a human).
+- SFX soft, band-limited, ducked; say if you could not listen.
+- Character effects need separate rig/acting and VFX judgments. The Hollow Purple brief-only experiment did not pass the strict visual gate; do not promote an unapproved experiment to the house benchmark.
+- Converging trajectories must share an exact endpoint. Keep the energy target away from the face, and derive forearm geometry from wrist targets rather than leaving fixed sleeves behind.
+- Destruction needs intact ground ahead of a moving front, a trench behind it, and a persistent scar. Debris alone is not proof of impact. Taper projectile tails instead of drawing a white stick.
+- Verify arbitrary seeking, including returning to frame zero after a late frame. Inspect motion strips and frame-exact hit samples; low-rate strips cannot prove a 1–3-frame flash.
+- Explicitly request canvas fonts with `document.fonts.load(...)` and expose a readiness promise before rendering. `document.fonts.ready` alone can resolve before a canvas-only font is requested, producing a first-title fallback-font jump.
+- Clamp subframe shutter samples to the active camera shot. Sampling across a hard cut creates an unintended double exposure.
+- Fix a title's composition before hiding objects with a scrim. Remove foreground collisions or move the baseline; a large haze can leave ghosted silhouettes.

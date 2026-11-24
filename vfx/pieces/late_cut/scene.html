@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>The cut arrives late</title>
+<style>@font-face{font-family:FilmSerif;src:url(serif.woff2)}*{box-sizing:border-box}html,body{margin:0;background:#141014;color:#ecebe6}canvas{width:100vw;max-height:92vh;object-fit:contain;display:block}nav{display:flex;gap:18px;align-items:center;padding:12px 4vw;font:14px system-ui}button{background:#ecebe6;color:#141014;border:0;padding:8px 16px;cursor:pointer}input{flex:1}</style></head>
+<body><canvas id="c" width="1920" height="1080"></canvas><nav><button id="play">Play</button><input id="seek" type="range" min="0" max="12" step="0.001" value="0" aria-label="Seek"><span id="time">0.00 / 12.00</span></nav>
+<script src="vfx_core.js"></script>
+<script>var KROT=0;function roundRect(x,y,w,h,r){X.beginPath();X.roundRect(x,y,w,h,r)}</script>
+<script src="weapon.js"></script><script src="scene.js"></script>
+<script>let running=false,start=0,at=0;const seek=document.getElementById('seek'),btn=document.getElementById('play');btn.disabled=true;btn.onclick=()=>{running=!running;if(running)start=performance.now()-at*1000;btn.textContent=running?'Pause':'Play'};seek.oninput=()=>{at=+seek.value;start=performance.now()-at*1000;render(at)};function tick(now){if(running){at=(now-start)/1000;if(at>=12){at=12;running=false;btn.textContent='Play'}render(at);seek.value=at}document.getElementById('time').textContent=at.toFixed(2)+' / 12.00';requestAnimationFrame(tick)}window.ready=document.fonts.load('132px FilmSerif','The cut arrives late.').then(()=>document.fonts.ready);window.ready.then(()=>{btn.disabled=false;render(0);requestAnimationFrame(tick)});</script></body></html>
