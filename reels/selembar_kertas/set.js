@@ -11,10 +11,16 @@ const faceCentre = (g, aDeg) => { g.rotation.y = -aDeg * Math.PI / 180; };   // 
 
 export const SET = {};
 
+function seatGeo() { // seat + backrest merged into one geometry (instanced 732 times)
+  const parts = [new THREE.BoxGeometry(.62, .22, .58).translate(0, -.1, .04), new THREE.BoxGeometry(.62, .62, .12).translate(0, .2, -.27)].map(b => b.toNonIndexed());
+  const g = new THREE.BufferGeometry();
+  for (const k of ['position', 'normal']) g.setAttribute(k, new THREE.Float32BufferAttribute([...parts[0].attributes[k].array, ...parts[1].attributes[k].array], 3));
+  return g;
+}
 function seats() { // exactly 732 seats in 8 concentric rows (the MPR's 580 DPR + 152 DPD members)
   const rows = 8, radii = [...Array(rows)].map((_, i) => 11.5 + i * 1.15), tot = radii.reduce((a, b) => a + b, 0);
   const counts = radii.map(r => Math.round(732 * r / tot)); counts[rows - 1] += 732 - counts.reduce((a, b) => a + b, 0);
-  const geo = new THREE.BoxGeometry(.62, .5, .62), mat = new THREE.MeshToonMaterial({ color: 0xffffff });
+  const geo = seatGeo(), mat = new THREE.MeshToonMaterial({ color: 0xffffff });
   const im = new THREE.InstancedMesh(geo, mat, 732); im.frustumCulled = false;
   const M = new THREE.Matrix4(), pos = []; let k = 0;
   radii.forEach((r, ri) => { for (let i = 0; i < counts[ri]; i++) {

@@ -1,6 +1,6 @@
 // acting: the 2D role characters, one function per beat. Each returns [{fig, chip...}] for the chip pass.
 import { W, C, clamp, lerp, ease, prog, amp, rrect } from '../../vendor/toon.js';
-import { twos, easeX, antic, arrive } from '../../vendor/toon2.js';
+import { twos, easeX, antic, arrive, leave } from '../../vendor/toon2.js';
 import { proj } from './world3d.js';
 import { ANG, polar } from './set.js';
 import { figure, chip } from './cast2d.js';
@@ -13,13 +13,21 @@ const at = (aDeg, r) => polar(aDeg, r);
 
 function hookVP(g, t, tc, a) {          // the VP stands by the chair, then walks off on "mundur"
   if (t > a.cerita + .6) return [];
-  const w = prog(t, a.mundur - .25, a.mundur + .75, ease.in), ad = antic(tc, a.mundur - .25, .5), wp = walkPose(tc);   // already turning away by 0.3 s
-  const f = figure(g, -1.05 - w * 5, 1.5, 1.4, { ...WAPRES, sq: ad.sq, legL: w > 0 ? wp.legL : 0, legR: w > 0 ? wp.legR : 0, lookX: -.8 * prog(tc, .25, .45), blink: blinkAt(tc, 1), brow: 1, smile: -.2 }, 3);
+  const w = prog(t, .35, a.mundur + .7, ease.in), ad = antic(tc, .35, .5), wp = walkPose(tc);   // walking off by 0.5 s
+  const f = figure(g, -1.05 - w * 5, 1.5, 1.4, { ...WAPRES, sq: ad.sq, legL: w > 0 ? wp.legL : 0, legR: w > 0 ? wp.legR : 0, lookX: -.8 * prog(tc, .15, .3), blink: blinkAt(tc, 1), brow: 1, smile: -.2 }, 3);
   return [{ f, text: 'WAPRES', t0: .05, t1: a.mundur + .9 }];
 }
+function hatta(g, t, tc, a) {          // the only earlier VP resignation (1956): a faded role figure, no likeness
+  if (t < a.y1956 - .3 || t > a.cerita) return [];
+  const k = arrive(tc, a.y1956 - .1, .3, 1.3), out = leave(t, a.cerita - .35, .3);
+  g.save(); g.globalAlpha = (1 - out) * .9;
+  const f = figure(g, 1.3, 1.5, 1.4, { kind: 'suit', hair: 'peci', shirt: '#B9A68A', tie: '#7A6A55', s: k.s, lookX: -.4, blink: blinkAt(tc, 15), smile: 0 }, 15);
+  g.restore();
+  return [{ f, text: 'HATTA · 1956', t0: a.y1956, t1: a.cerita - .3 }];
+}
 function judgeMK(g, t, tc, a) {         // points at the gate on "buka"
-  if (t < a.y2023 - .8 || t > a.menang) return [];
-  const j = at(ANG.mk + .4, 38.2), point = prog(tc, a.buka - .15, a.buka + .1, ease.out);
+  if (t < a.y2023 - .8 || t > a.u36 + .5) return [];
+  const j = at(ANG.mk + .4 - leave(t, a.u36 - .1, .5) * 8, 38.2), point = prog(tc, a.buka - .15, a.buka + .1, ease.out);
   const f = figure(g, j[0], 0, j[2], { kind: 'robe', hair: 'short', hairCol: '#9A948C', shirt: C.ink, brow: -.6, smile: .1, lookX: -.7, blink: blinkAt(tc, 2),
     hlx: -30 - point * 70, hly: 95 - point * 140, hrx: 30, hry: 95 }, 5);
   return [{ f, text: 'HAKIM MK', t0: a.mk - .1, t1: a.sembilan + .2 }];
@@ -27,7 +35,7 @@ function judgeMK(g, t, tc, a) {         // points at the gate on "buka"
 function walker(g, t, tc, a) {          // WALI KOTA -> CAWAPRES -> WAPRES: through the gate, then cheering at the ballot box
   if (t < a.sembilan - .4 || t > a.tapi + .2) return [];
   const k = prog(t, a.sembilan - .4, a.daftar + .2, ease.inOut), onBallot = t > a.menang - .1;
-  const q = onBallot ? at(ANG.ballot - 2.2, 38.5) : at(ANG.mk - 2.5, lerp(47, 37, k));   // out of the court, through the gate, towards us
+  const q = onBallot ? at(ANG.ballot - 2.2, 38.5) : at(ANG.mk - 2.5, lerp(47, 38.6, k));   // out of the court, through the gate, towards us
   const wp = walkPose(tc), moving = !onBallot && k > 0 && k < 1, cheer = onBallot ? prog(tc, a.menang, a.menang + .25, easeX.land) : 0;
   const text = t < a.daftar ? 'WALI KOTA' : t < a.menang ? 'CAWAPRES' : 'WAPRES', t0 = t < a.daftar ? a.sembilan : t < a.menang ? a.daftar : a.menang;
   const f = figure(g, q[0], 0, q[2], { ...WAPRES, legL: moving ? wp.legL : 0, legR: moving ? wp.legR : 0, lift: moving ? wp.dy / 500 : 0, lookX: 0,
@@ -49,14 +57,14 @@ function heldDoc(g, f, raise) {         // the paper in the advokat's right hand
 }
 function judgeMA(g, t, tc, a) {
   if (t < a.oktober - .6 || t > a.lalu + .2) return [];
-  const j = at(ANG.ma - 2.3, 41);
+  const j = at(ANG.ma - 2.4, 40.2);
   const f = figure(g, j[0], 0, j[2], { kind: 'robe', hair: 'short', hairCol: '#3A2E28', shirt: C.ink, brow: -1, smile: -.2, lookX: .7, blink: blinkAt(tc, 6),
     mouth: t > a.kata && t < a.lalu ? amp(t) * .9 : 0, hlx: -30, hly: 95, hrx: 40, hry: 30 }, 9);
   return [{ f, text: 'HAKIM MA', t0: a.oktober + .1, t1: a.lalu }];
 }
 function leavesVP(g, t, tc, a) {        // back in the hall: hand on the table (the letter), then walks off on "mundur"
   if (t < a.nov - .2 || t > a.sekarang + .3) return [];
-  const w = prog(t, a.mundur2 + .05, a.tanpa + .5, ease.in), wp = walkPose(tc), reach = prog(tc, a.nov + .2, a.sebelum ?? a.mundur2, ease.out);
+  const w = prog(t, a.mundur2 + .05, a.tanpa - .1, ease.in), wp = walkPose(tc), reach = prog(tc, a.nov + .2, a.sebelum ?? a.mundur2, ease.out);
   const f = figure(g, -.6 - w * 6, 1.5, -2.2, { ...WAPRES, legL: w > 0 ? wp.legL : 0, legR: w > 0 ? wp.legR : 0, lookX: -.8, blink: blinkAt(tc, 3), brow: 1, smile: -.1,
     hlx: -25, hly: 95, hrx: 40 + reach * 40, hry: 95 - reach * 60 }, 3);
   return [{ f, text: 'WAPRES', t0: a.nov + .3, t1: a.mundur2 + .8 }];
@@ -86,7 +94,7 @@ function rails(g) {                     // the fence rails drawn over LO, so he 
   }
 }
 
-const BEATS = [hookVP, judgeMK, walker, advokat, judgeMA, leavesVP, nominees, lo];
+const BEATS = [hookVP, hatta, judgeMK, walker, advokat, judgeMA, leavesVP, nominees, lo];
 export function cast(g, t) {
   const a = anchors(), tc = twos(t), chips = BEATS.flatMap(b => b(g, t, tc, a)).filter(o => o.f && o.f.x > 40 && o.f.x < W - 40);   // no chip for a figure that has left the frame
   for (const o of chips) chip(g, t, o.t0, o.t1, o.f.x, o.f.top - 46 * clamp(o.f.s * 3, .7, 1.4), o.text, { size: (o.size ?? 40) * clamp(o.f.s * 2.4, .9, 1.3) });

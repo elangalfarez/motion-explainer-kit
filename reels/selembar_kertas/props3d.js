@@ -92,7 +92,7 @@ export function gate(x, z, len = 9, o = {}) {
 export function table(x, z, w = 8, o = {}) {
   const g = group(x, z, o.ry ?? 0);
   box(w, .35, 2.4, COL.wood, 0, 2.1, 0, 8, g);
-  box(w, 1.7, .15, o.cloth ?? COL.green, 0, 1.2, 1.15, 6, g);
+  box(w, 2.05, .15, o.cloth ?? COL.green, 0, 1.025, 1.15, 6, g);   // cloth reaches the floor: no gap for the seats behind to flicker through
   for (const sx of [-1, 1]) box(.3, 2, .3, COL.wood, sx * (w / 2 - .4), 1, -.9, 6, g);
   groundShadow(x, z, w * .6, 1.6); return g;
 }

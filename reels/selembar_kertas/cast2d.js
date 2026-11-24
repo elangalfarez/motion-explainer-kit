@@ -31,8 +31,8 @@ export function chip(g, t, t0, t1, x, y, text, o = {}) {
 // Corner truth label ("ILUSTRASI" for drawn stand-ins, "MENURUT LAPORAN MEDIA" for reported claims; the dot is drawn).
 export function truthTag(g, text, a = 1, y = 140) {
   if (a <= .01) return;
-  g.save(); g.globalAlpha = a; g.font = `800 30px ${C.font}`; const tw = g.measureText(text).width;
-  rrect(g, 48, y - 26, tw + 76, 52, 26); g.fillStyle = 'rgba(27,24,23,.86)'; g.fill();
+  g.save(); g.globalAlpha = a; g.font = `800 34px ${C.font}`; const tw = g.measureText(text).width;
+  rrect(g, 48, y - 29, tw + 80, 58, 29); g.fillStyle = 'rgba(27,24,23,.86)'; g.fill();
   g.fillStyle = C.orange; g.beginPath(); g.arc(78, y, 9, 0, 7); g.fill();
   g.fillStyle = C.white; g.textBaseline = 'middle'; g.fillText(text, 98, y + 1); g.restore();
 }

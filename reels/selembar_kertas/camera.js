@@ -23,8 +23,8 @@ function camKeys() {
   add(a.cerita - .25, { a: 0, r: -10.5, h: 2.8, la: 0, lr: 6, lh: 3.1, fov: 38 }, ease.out);
   // the paper falls: crane up and over the chair, follow it down towards the schools
   add(a.kertas - .1, { a: 0, r: -4, h: 13, la: 0, lr: 16, lh: 15, fov: 44 }, ease.inOut);
-  add(a.surat + .05, st(0, { r: 35, h: 3.3, lr: 44, lh: 3.4, fov: 38 }), easeX.land);
-  add(a.sekolah - .1, st(0, { r: 35.6, h: 3.3, lr: 44, lh: 3.5, fov: 37 }));
+  add(a.surat + .05, st(0, { r: 33.6, h: 3.3, lr: 44, lh: 3.4, fov: 40 }), easeX.land);
+  add(a.sekolah - .1, st(0, { r: 34.2, h: 3.3, lr: 44, lh: 3.5, fov: 39 }));
   add(a.luar + .2, st(0, { r: 31.5, h: 4, la: 0, lr: 44, lh: 4.6, fov: 46 }), ease.out);       // pull back to show both schools
   add(a.y2023 - .55, st(0, { r: 31.8, h: 4, la: 1, lr: 44, lh: 4.6, fov: 46 }));
   // MK and the gate
@@ -33,7 +33,7 @@ function camKeys() {
   add(a.di40, st(ANG.mk - 2.5, { r: 27.2, h: 2.4, lh: 2.4, fov: 44 }), ease.out);
   add(a.sembilan - .1, st(ANG.mk - 2.5, { r: 27.6, h: 2.3, lh: 2.3, fov: 44 }));
   // the walker: track along the ring with him
-  add(a.daftar, st(ANG.mk - 1.5, { r: 27.4, lh: 2.0 }), ease.inOut);
+  add(a.daftar, st(ANG.mk - 2.2, { r: 29.6, h: 2.1, lh: 2.0, fov: 38 }), ease.inOut);   // push in on the new candidate
   add(a.menang - .4, st(ANG.mk - 1, { r: 27.2 }));
   // ballot box: land, then crane up a little
   whip(a.menang - .02, st(ANG.mk - 1, { r: 27.2 }), st(ANG.ballot - 1, { r: 31, h: 2.6, lh: 2.4, fov: 44 }));
@@ -45,6 +45,7 @@ function camKeys() {
   whip(a.oktober - .05, st(ANG.street + 2), st(ANG.ma, { r: 28, h: 3, lh: 3.2, fov: 46 }));
   add(a.batal - .15, st(ANG.ma - 1, { r: 30.5, h: 2.8, lh: 2.5, fov: 44 }), ease.inOut);
   add(a.kata, st(ANG.ma - 1, { r: 31.2, h: 2.8, lh: 2.5, fov: 43 }), ease.out);
+  add(a.bukti, st(ANG.ma - 1.2, { r: 31.4, h: 2.6, lh: 2.3, fov: 42 }), ease.inOut);
   add(a.lalu - .5, st(ANG.ma, { r: 31, h: 2.8, lh: 2.5, fov: 44 }));
   // DPR: whip, slow push to the HMP door
   whip(a.lalu - .02, st(ANG.ma, { r: 31, h: 2.8, lh: 2.5, fov: 44 }), st(ANG.dpr, { r: 25, h: 4.5, lh: 5.5, fov: 50 }));
@@ -63,8 +64,8 @@ function camKeys() {
   add(a.n732 - .1, { a: ANG.lo, r: -14, h: 19, la: ANG.lo, lr: 9, lh: 0, fov: 52 }, ease.inOut);   // seats in view as the count starts
   add(a.lo - .6, { a: ANG.lo, r: -12.5, h: 17.5, la: ANG.lo, lr: 10, lh: 0, fov: 50 }, ease.lin);
   // land low among the lit seats: the 732 in the foreground, LO behind the fence
-  add(a.lo - .05, { a: ANG.lo, r: 15, h: 1.55, la: ANG.lo, lr: 30, lh: 1.75, fov: 42 }, easeX.land);
-  add(a.end + 1, { a: ANG.lo, r: 16.2, h: 1.55, la: ANG.lo, lr: 30, lh: 1.8, fov: 38 }, ease.lin);
+  add(a.lo - .05, { a: ANG.lo, r: 13.4, h: 2.3, la: ANG.lo, lr: 30, lh: 1.5, fov: 44 }, easeX.land);   // seats, fence and LO all in one frame
+  add(a.end + 1, { a: ANG.lo, r: 14.4, h: 2.25, la: ANG.lo, lr: 30, lh: 1.5, fov: 40 }, ease.lin);
   KEYS = k; return k;
 }
 export function camAt(t) {

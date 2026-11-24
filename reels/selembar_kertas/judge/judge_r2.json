@@ -1,0 +1,83 @@
+{
+  "scores": {
+    "hook_2s": 7,
+    "story_twist": 8,
+    "truth_labels": 8,
+    "motion_craft": 6,
+    "camera_one_take": 8,
+    "every_2s_new": 6,
+    "readability": 6,
+    "style_consistency": 7,
+    "audio_mix": 7,
+    "ending": 7
+  },
+  "average": 7.0,
+  "evidence": {
+    "hook_2s": ["judge/t000.00.png", "judge/strips/hook.png", "judge/t002.00.png"],
+    "story_twist": ["judge/sheet.png", "judge/t026.00.png", "judge/t050.00.png", "judge/t052.00.png", "judge/t054.00.png"],
+    "truth_labels": ["judge/t008.00.png", "judge/t024.00.png", "judge/t026.00.png", "judge/t034.00.png", "judge/t036.00.png", "judge/t054.00.png"],
+    "motion_craft": ["judge/strips/stamp_MA.png", "judge/strips/slam_732.png", "judge/strips/whip_2023.png", "judge/t002.00.png", "judge/t008.00.png", "judge/t014.00.png", "judge/t018.00.png"],
+    "camera_one_take": ["judge/strips/turn_12nov.png", "judge/t042.00.png", "judge/t008.00.png"],
+    "every_2s_new": ["judge/t016.00.png", "judge/t018.00.png", "judge/t020.00.png", "judge/t022.00.png", "judge/t032.00.png", "judge/t034.00.png", "judge/t044.00.png", "judge/t046.00.png", "judge/t050.00.png", "judge/t052.00.png"],
+    "readability": ["judge/t002.00.png", "judge/t008.00.png", "judge/t026.00.png", "judge/t028.00.png", "judge/t032.00.png", "judge/t054.00.png", "judge/phone_sheet.png"],
+    "style_consistency": ["judge/t002.00.png", "judge/t024.00.png", "judge/t042.00.png", "judge/t046.00.png", "judge/t052.00.png", "/home/user/kit/examples/tikus_hanoi/stills/sheet.png"],
+    "audio_mix": [],
+    "ending": ["judge/t054.00.png", "judge/t055.60.png", "judge/strips/end.png"]
+  },
+  "fixes": {
+    "hook_2s": "0.0-2.0 s: frame 1 shows a headline over a standing man and an empty lower third (y 1420-1640); the man never stands up or walks out before 2 s. Put a true number on frame 1 (e.g. 1956 or the date), push the camera in so the man and chair fill the frame, start the walk-off by 0.5 s, and remove the ghosted 'WAPRES MUNDUR' left under 'ERAKHIR:' at 2.0 s.",
+    "story_twist": "25.5-26.5 s: the final 96.214.691 is only ever seen as a grey, blurred ghost (t026); hold it crisp for at least 1 s, because the ending's 96 million vs 732 contrast depends on it. Also chip the advocate ADVOKAT at 26 s (he has no chip).",
+    "truth_labels": "9-11 s: the claim 'dianggap setara SMA' is only in the caption; the '= SMA' mark from the beats never appears. Add it. Also show 96.214.691 crisp (26 s, 50 s): both stills catch the counter mid-roll at 42.759.120 and 88.910.602 under the label 'SUARA PRABOWO-GIBRAN 2024', so anyone who pauses there reads a wrong number.",
+    "motion_craft": "Headline swaps at 2.0 s, 8.0 s, 26.0 s and 28.0 s crossfade a ghost of the old headline under a half-landed new one ('ERAKHIR:', 'SURAT KETERANGAN' over 'SELEMBAR KERTAS', '30OKT'). Clear the old text before the new one lands. 14-22 s: the MK barrier arm shortens instead of rotating up, and the WALI KOTA walker passes under a closed arm. Make the arm lift on 'buka pintu' and walk him through after it opens.",
+    "camera_one_take": "8.0 s: the camera is so close to the document that 'SURAT KETERANGAN' runs off both frame edges and the sheet's border is lost. Pull back about 15% so the sheet reads as an object in the world. 42-46 s: three frames share the same low chair angle; orbit as the beats intend.",
+    "every_2s_new": "50-52 s: t052 is an unlabeled dot field with a mostly empty top half. Bring the 732 hall reveal forward to 52 s, or keep a label there. Also break 44-46 s (same chair angle: 'TANPA' then 'dua nama' with one small figure) by bringing the two candidates in at 46 s, not 48 s.",
+    "readability": "32-34 s: 'PUTUSAN MA 742 K/TUN/2026' is about 28 px, black on grey, and sits across the document's top edge and a column line. Make it 40 px or larger on its own plate. Also 8.0 s (clipped headline plus ghost) and 54 s ('ANGGOTA MPR' sits on top of LO's head).",
+    "style_consistency": "Chair stage (2 s, 42-46 s): the table base strip at y ~1030-1230 renders as pixelated broken noise, and stray slab edges sit on the right edge at 24-26 s and the left edge at 10 s. Clean or hide them. Next to the flat drawn worlds in the house examples, these read as render errors.",
+    "audio_mix": "Not checked by ear. The measured numbers pass (-14.9 LUFS, -1.0 dBTP, max drift 0.100 s). Before sign-off, a human should listen to the 30 s stamp (the loudest hit) and the 40 s whip for harshness and masking of the voice.",
+    "ending": "55.0-55.6 s: LO reads as caged inside orange blocks, not standing outside the fence looking in. Pull back so the fence, the lit seats and LO all read; remove the 'NGGAK'/'TERMASUK' overlap at 55.0; trim the voice tail from about 0.5 s to 0.4 s."
+  },
+  "similar_pairs": [
+    "t002.00/t004.00: same locked chair composition (empty chair, the only change is the headline finishing '1956')",
+    "t016.00/t018.00: same MK barrier + HAKIM MK composition; only a yellow chip and a small walker are added",
+    "t020.00/t022.00: same two-character composition (walker left, judge right, columns); only the chip text and headline change",
+    "t030.00/t032.00/t034.00: same MA document + HAKIM MA composition for 4+ s; the stamp and the quote card are the only changes",
+    "t042.00/t044.00/t046.00: three frames of the giant chair from the same low angle",
+    "t050.00/t052.00: same dotted field with buildings; t052 drops the label and adds nothing"
+  ],
+  "readability_issues": [
+    "2.0 s: headline 'ERAKHIR:' clipped at the left edge, with a half-faded 'WAPRES MUNDUR' ghost behind it",
+    "8.0 s: 'SURAT KETERANGAN' clipped at both edges; a ghost of 'SELEMBAR KERTAS' overlaps it; the caption sits on the signature and seal lines",
+    "24.0 s: '2024' in 'SUARA PRABOWO-GIBRAN 2024' collides with a flying ballot card",
+    "26.0 s: the 96.214.691 counter and its sub-label are faded and blurred, unreadable at phone size",
+    "28.0 s: '30' and 'OKT' overlap ('30OKT') mid-slam",
+    "30.0 s: caption 'Mahkamah Agung membatalkannya.' spans x ~20-1060, about 20 px from each edge",
+    "32.0-34.0 s: 'PUTUSAN MA 742 K/TUN/2026' about 28 px, over the document's top edge and a column line; at 32 s the quote card's second line is empty",
+    "Sub-labels 'SUARA PRABOWO-GIBRAN 2024' (24, 50 s), 'ANGGOTA DPR · 8 FRAKSI' (36, 38 s) and 'ANGGOTA MPR' (54 s) are about 45 px cap height, under the 56 px bar",
+    "44.0 s: headline 'TANPA' alone, clipped at the left edge (x ~10), while the caption already reads 'Tanpa alasan.'",
+    "54.0 s: 'ANGGOTA MPR' is drawn across LO's tiny head",
+    "55.0 s (end strip frame 1): 'NGGAK' and 'TERMASUK' overlap mid-slam",
+    "All frames: the ILUSTRASI badge text is about 26 px; fine as a tag, unreadable on phone_sheet.png"
+  ],
+  "other_issues": [
+    "0.0 s: the beats' stand-up and walk-off from the chair is not seen in the first 2 s; at 2.0 s the man has vanished between frames",
+    "4.0 s: the HATTA role chip from the beats never appears; '1956' carries no name",
+    "10.0 s: building stubs cut at the left edge (x 0-20) and a stray vertical line at the right edge (x ~1075)",
+    "14.0-22.0 s: the barrier arm shortens rather than lifting; at 18 s the walker stands behind a closed arm; at 20 and 22 s the WALI KOTA/CAWAPRES chips sit on top of the arm",
+    "18.0 s: HAKIM MK's hand is cropped at the right edge",
+    "16-22 s: the '36' age slam from the beats is not visible in any frame",
+    "24.0 s: the ballot box is a blank white cube with no ballots shooting out; a tall white slab is cut off at the right edge (x 1005-1080)",
+    "26.0 s: the advocate has no ADVOKAT chip; the top half of the frame is empty beige; a stray slab sits on the right edge (x 1035-1080)",
+    "28.0-34.0 s: the HAKIM MA chip overlaps the document's left edge",
+    "36.0 s: the DPR crowd is cut off at the left edge and drawn over the building's windows; heads read as pins",
+    "38.0-40.0 s: the HMP door is cut off at the right edge, and the HMP chip disappears once the door opens at 40 s",
+    "2.0, 42.0, 44.0, 46.0 s: the table base strip under the chair stage renders as pixelated broken noise (looks like z-fighting)",
+    "42.0 s: the beats' envelope slide is not visible; the MK barrier stub at the right edge (x 990-1080) intrudes on the chair stage",
+    "44.0 s: a lone white hand sits at the left edge (x 0-20, y ~965), the WAPRES character exiting",
+    "46.0 s: the MPR figure has no chip and stands under the chair seat; the caption says 'dua nama' but no candidates are on screen until 48 s",
+    "52.0 s: a cropped temple fragment at the bottom-left, a ballot box half out of frame at the bottom-right, and a tree behind the caption, all on an unlabeled field",
+    "54.0 s: trees cut off at the top edge; LO is a tiny figure hidden behind the label",
+    "55.6 s: close-up orange seat blocks read as abstract slabs, and LO looks caged behind black bars rather than shut out",
+    "whip_2023 strip: no camera whip is visible in the 9 frames (the camera is static at MK); only the 2023 slam lands"
+  ],
+  "verdict": "This is one connected, well-sourced story with a real turn (MA strikes down the paper, 120 signatures, resignation) and a sharp last line. The continuous world holds: the turn_12nov strip whips with speed lines from the DPR back past the MK barrier to the chair stage. Two moments are at the house bar: the stamp at 30 s (stamp_MA.png: scale-down, ghost, burst lines, kick) and the 732 seats lighting up as the counter rolls (slam_732.png, t054). The rest falls below it. Five headline swaps leave ghosted or clipped text in the 2 s stills (2, 8, 26, 28, 55 s). The barrier at MK never visibly lifts. Six runs of near-identical frames (16-18, 20-22, 30-34, 42-46, 50-52). The number the ending depends on, 96.214.691, is never shown crisp. Render debris appears on several frames: the pixel-noise table base, stray building slabs at the frame edges, a lone hand. The opening frame states the news clearly but has no motion and an empty lower third, and the last frame says 'Lo nggak termasuk' in both headline and caption, but the image reads as LO caged in orange blocks rather than shut out of the hall. Audio passes on the measured numbers only; nobody has listened to it. Average 7.0, with motion_craft, every_2s_new and readability at 6, below the gate's 7 floor. Not ready to ship."
+}
