@@ -10,3 +10,6 @@ __pycache__/
 calib/
 examples/*/stills/
 reels/_lookdev/
+reels/*/render.log
+reels/*/_final_audio.wav
+reels/*/mix_sfx.wav

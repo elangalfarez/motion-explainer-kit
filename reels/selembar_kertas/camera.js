@@ -60,7 +60,8 @@ function camKeys() {
   add(a.lama + .1, { a: ANG.dpr - 18, r: 6, h: 46, la: ANG.dpr - 198, lr: 160, lh: 0, fov: 52 }, ease.inOut);
   add(a.pengganti, { a: ANG.dpr - 20, r: 5, h: 48, la: ANG.dpr - 206, lr: 160, lh: 0, fov: 52 }, ease.lin);
   // 732: tilt down onto the lit seats, then drop outward to LO behind the fence
-  add(a.n732 + .8, { a: ANG.lo - 180, r: 7, h: 22, la: ANG.lo, lr: 22, lh: 0, fov: 54 }, ease.inOut);
+  add(a.n732 - .1, { a: ANG.lo, r: -14, h: 19, la: ANG.lo, lr: 9, lh: 0, fov: 52 }, ease.inOut);   // seats in view as the count starts
+  add(a.lo - .6, { a: ANG.lo, r: -12.5, h: 17.5, la: ANG.lo, lr: 10, lh: 0, fov: 50 }, ease.lin);
   add(a.lo - .05, { a: ANG.lo, r: 17, h: 2.4, la: ANG.lo, lr: 30, lh: 2.2, fov: 40 }, easeX.land);
   add(a.end + 1, { a: ANG.lo, r: 18.4, h: 2.45, la: ANG.lo, lr: 30, lh: 2.25, fov: 36 }, ease.lin);
   KEYS = k; return k;

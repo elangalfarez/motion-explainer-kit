@@ -16,7 +16,7 @@ def main():
     spoken = " ".join(s for p in cfg["passages"] for _, s in voice.parse(p))
     wav = D / "_final_audio.wav"
     subprocess.run(["ffmpeg", "-y", "-v", "quiet", "-i", str(D / "final.mp4"), "-vn", "-ac", "1", "-ar", "48000", str(wav)], check=True)
-    real, _ = voice.align_eleven(wav, spoken) if a.aligner == "eleven" else voice.align_whisper(wav, spoken, cfg.get("lang", "id"))
+    real, _ = voice.align_eleven(wav, spoken) if a.aligner == "eleven" else voice.align_whisper(wav, spoken, cfg.get("lang", "id"), [(d, s) for p in cfg["passages"] for d, s in voice.parse(p)])
     words = json.loads((D / "words.json").read_text())["words"]
     toks = [(d, s) for p in cfg["passages"] for d, s in voice.parse(p)]
     rows, k = [], 0
