@@ -1,0 +1,71 @@
+{
+  "scores": {
+    "hook_2s": 7,
+    "story_twist": 8,
+    "truth_labels": 9,
+    "motion_craft": 7,
+    "camera_one_take": 8,
+    "every_2s_new": 6,
+    "readability": 7,
+    "style_consistency": 8,
+    "audio_mix": 7,
+    "ending": 8
+  },
+  "average": 7.5,
+  "evidence": {
+    "hook_2s": ["judge/t000.00.png", "judge/strips/hook.png", "judge/t002.00.png"],
+    "story_twist": ["judge/t006.00.png", "judge/t018.00.png", "judge/t034.00.png", "judge/t042.00.png", "judge/t054.00.png", "judge/t055.82.png"],
+    "truth_labels": ["judge/t004.00.png", "judge/t008.00.png", "judge/t026.00.png", "judge/t034.00.png", "judge/t036.00.png", "judge/t042.00.png", "judge/t054.00.png"],
+    "motion_craft": ["judge/strips/stamp_MA.png", "judge/strips/whip_2023.png", "judge/strips/slam_732.png", "judge/strips/hook.png", "judge/strips/end.png"],
+    "camera_one_take": ["judge/strips/turn_12nov.png", "judge/t042.00.png", "judge/t044.00.png", "judge/t050.00.png", "judge/t054.00.png", "judge/strips/whip_2023.png"],
+    "every_2s_new": ["judge/t016.00.png", "judge/t018.00.png", "judge/t028.00.png", "judge/t030.00.png", "judge/t032.00.png", "judge/t034.00.png", "judge/t042.00.png", "judge/t044.00.png", "judge/t046.00.png", "judge/t050.00.png", "judge/t052.00.png"],
+    "readability": ["judge/phone_sheet.png", "judge/t030.00.png", "judge/t042.00.png", "judge/t046.00.png", "judge/t048.00.png", "judge/t054.00.png", "judge/t016.00.png"],
+    "style_consistency": ["judge/sheet.png", "judge/t048.00.png", "judge/t022.00.png", "../../examples/viktor_gratis/stills/sheet.png", "../../examples/tikus_hanoi/stills/sheet.png"],
+    "audio_mix": [],
+    "ending": ["judge/t055.82.png", "judge/strips/end.png", "judge/t054.00.png"]
+  },
+  "fixes": {
+    "hook_2s": "0.0-0.3 s: frame 1 is a static guy beside a chair with a headline; the planned stand-up/walk-out does not show in hook.png. Start with WAPRES already mid-stride off the chair (chair seat still rocking, chip trailing) and put the rarity on frame 1 as the big number: 'WAPRES MUNDUR' plus a giant '1956' (or 'PERTAMA SEJAK 1956') so a true number and motion are both on screen before 0.5 s.",
+    "story_twist": "~22-24 s: the '36' age slam (the reason the MK ruling mattered) is not visible in any sample (t020 shows '+9 HARI', t022 'DAFTAR CAWAPRES'). Land '36' on the WALI KOTA guy next to the 'MIN. 40 TAHUN' sign so the cause-effect from MK to candidacy is seen, not only heard.",
+    "truth_labels": "32-34 s: the white box styled as a ruling quote ('Bukti ijazah luar negeri: tidak ditemukan') reads as verbatim text; either use the ruling's exact wording or mark it 'RINGKASAN PUTUSAN'. Also show the advocate's role chip (ADVOKAT) at ~26 s; the person holding the paper has no label.",
+    "motion_craft": "55.3-55.57 s and 0-0.27 s: characters are statues (end.png and hook.png: 9 near-identical frames each). Give LO an antic and a small hold (grip the fence bar, head drops on 'termasuk') and give WAPRES a stand/turn in the first 8 frames; also add a pointing gesture to the advocate at ~26 s.",
+    "camera_one_take": "~11.4 s: whip_2023.png shows four identical frames then a title slam; the whip itself is not visible (camera already parked at MK). Move the whip so its last 3-4 frames (speed lines, decel, settle) fall around the '2023' word, as turn_12nov.png already does well.",
+    "every_2s_new": "42-48 s: four consecutive judge frames (t042, t044, t046, t048) are the same chair-stage composition, and t050/t052 are both the dot field. Change the framing between 44 s and 46 s (e.g. low orbit to the MPR table so the President's envelope arrives in a new angle) and start the drop toward the hall before 52 s so t052 differs from t050.",
+    "readability": "46 s: 'SURAT PRESIDEN' runs off both edges of the envelope and its remnant pokes out behind MENKO PMK at 48 s; 'SURAT MUNDUR' (42-44 s) is ~26 px. Make envelope labels a chip at >= 56 px outside the envelope, remove the envelope at 48 s, and move 'ANGGOTA MPR' at 54 s off the tiny LO figure it sits on.",
+    "style_consistency": "24-26 s: a floating white vertical plank at the right edge and an empty cream wall fill half of t026; replace with the planned street/ballot geography and keep characters at the house-example scale (viktor/tikus fill ~40% of frame height).",
+    "audio_mix": "No human has listened. Have one person listen on phone speakers to 0-4 s, 30 s (stamp, the loudest hit) and 52-56 s (silence before cut) and confirm the stamp does not clip through the voice; measured numbers alone cannot earn above 7.",
+    "ending": "55.3-55.82 s: LO's orange shirt sits on orange seats, so the figure reads weakly at phone size, and the headline 'NGGAK TERMASUK' duplicates the caption. Put LO in a neutral shirt (or darken seats in the foreground) and drop or shrink the top headline so the face and the caption carry the last line."
+  },
+  "similar_pairs": [
+    "t016.00/t018.00: same MK colonnade, barrier, HAKIM MK, 'DI BAWAH 40'; only a sign row and a small walker added",
+    "t028.00/t030.00: same MA court, sheet and HAKIM MA; headline extends from '30 OKT' to '30 OKT 2026'",
+    "t032.00/t034.00: same stamped sheet, judge and quote box; only the quote text fills in",
+    "t042.00/t044.00/t046.00/t048.00: four frames on the same chair-stage composition (chair center-left, envelope on seat)",
+    "t050.00/t052.00: same dot field with white blocks from the crane; headline swaps only"
+  ],
+  "readability_issues": [
+    "t002.00: 'TERAKHIR:' clipped at the left edge mid-slide (transient, acceptable if <0.2 s)",
+    "t006.00-t010.00: 'No. 9149/D.D1/KS/2019' on the document is ~20-30 px; unreadable at phone size (decorative, but it is the one specific fact on the prop)",
+    "t014.00-t018.00: barrier arm passes through the ILUSTRASI chip and cuts between 'DI' and 'BAWAH' in the headline",
+    "t024.00: a flying ballot overlaps '2024' in 'SUARA PRABOWO-GIBRAN 2024'",
+    "t030.00: caption 'Mahkamah Agung membatalkannya.' is auto-shrunk to roughly 75% of the normal caption size (visible on phone_sheet.png as the smallest caption)",
+    "t032.00-t034.00: 'PUTUSAN MA 742 K/TUN/2026' header ~40 px, grey on white",
+    "t042.00-t044.00: 'SURAT MUNDUR' envelope label ~26 px",
+    "t046.00: 'SURAT PRESIDEN' clipped on both envelope edges, ~28 px",
+    "t048.00: envelope remnant ('S...EN') peeks out behind MENKO PMK's head and chip",
+    "t052.00: caption 'Penggantinya dipilih 732' sits over a tree, a cropped ballot box and a cropped colonnade fragment (busy)",
+    "t054.00: 'ANGGOTA MPR' label sits directly over the tiny LO figure's head",
+    "strips/slam_732.png frame 1: ghosted 'PENGGANTINYA?' overlaps the '0' counter during the crossfade"
+  ],
+  "other_issues": [
+    "t012.00 and t016.00: thin vertical hairline in the middle of the MK colonnade (x~550-595 px, y~680-1240 px) reads as a render seam",
+    "t020.00/t022.00: cropped red barrier fragment at the top-left edge reads as a stray red shape; HAKIM MK half-cropped at the right edge at t020",
+    "t024.00/t026.00: floating white vertical plank at the right edge (x~1010-1080 px) with no context",
+    "t026.00: the 96.214.691 counter stays on screen into the advocate beat, so the 'Tapi' turn has no headline of its own; the advocate has no ADVOKAT chip and does not point",
+    "t036.00 -> t038.00: the DPR crowd of raised hands disappears entirely; the door is labelled HMP but the crowd that signed it is gone",
+    "t046.00: line is 'dua nama' but one unlabelled figure is visible; the two chips only appear at t048",
+    "Planned '36' slam, 'WAPRES walks out' at 0-2 s and the falling sheet at ~4 s are not visible in any sample or strip (t004 shows the sheet already low in frame at t006, which is acceptable)",
+    "end.png: no visible change across 9 frames except the caption highlight leaving 'termasuk'; the hard cut itself cannot be verified from images"
+  ],
+  "verdict": "A clean, well-sourced, connected story in a style that holds up next to the house examples: dates and counts on screen (30 OKT 2026, PUTUSAN MA 742 K/TUN/2026, 120 · 8 FRAKSI, 96.214.691 labelled as the ticket's votes, 732 ANGGOTA MPR) match script.json, ILUSTRASI is on every frame, and the 40-41 s road travel back to the chair stage (turn_12nov.png) and the 732 seat-fill counter (slam_732.png) are the best craft moments. It does not clear the bar yet. The hook is a static headline beside a standing figure with no number and almost no motion in the first 0.27 s, so 0 s is only a moderate scroll-stopper for viewers not already following the news. The middle drags visually: five consecutive-frame pairs look alike, and 42-48 s is four samples of the same chair composition. Characters act very little (hook and end strips are near-identical frames), the 2023 whip is not visible, and small or clipped prop text ('SURAT PRESIDEN', 'SURAT MUNDUR', 'ANGGOTA MPR' over LO) plus a few stray cropped objects (plank at 24-26 s, red barrier fragment at 20-22 s, hairline at 12-16 s) look like errors. The last frame does land 'Lo nggak termasuk' with LO behind the MPR fence, but the orange-on-orange figure and duplicated headline blunt it. Audio is capped at 7 because nobody has listened. Fix the hook, break up 42-52 s and clear the prop-text and stray-object issues; those three would move the average above 8."
+}

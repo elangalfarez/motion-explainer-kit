@@ -28,9 +28,10 @@ function camKeys() {
   add(a.luar + .2, st(0, { r: 31.5, h: 4, la: 0, lr: 44, lh: 4.6, fov: 46 }), ease.out);       // pull back to show both schools
   add(a.y2023 - .55, st(0, { r: 31.8, h: 4, la: 1, lr: 44, lh: 4.6, fov: 46 }));
   // MK and the gate
-  whip(a.y2023 - .1, st(1, { r: 31.8, h: 4, lr: 44, lh: 4.6, fov: 46 }), st(ANG.mk - 2, { r: 26, h: 3, lh: 3.6, fov: 46 }));
+  whip(a.y2023 + .06, st(1, { r: 31.8, h: 4, lr: 44, lh: 4.6, fov: 46 }), st(ANG.mk - 2, { r: 26, h: 3, lh: 3.6, fov: 46 }));
   add(a.buka - .1, st(ANG.mk - 2.5, { r: 26.6, h: 2.6, lh: 2.8, fov: 46 }));
   add(a.di40, st(ANG.mk - 2.5, { r: 27.2, h: 2.4, lh: 2.4, fov: 44 }), ease.out);
+  add(a.asal, st(ANG.mk - 5, { r: 30.5, h: 2.7, lh: 2.9, fov: 38 }), ease.inOut);   // push to the sign
   add(a.sembilan - .1, st(ANG.mk - 2.5, { r: 27.6, h: 2.3, lh: 2.3, fov: 44 }));
   // the walker: track along the ring with him
   add(a.daftar, st(ANG.mk - 2.2, { r: 29.6, h: 2.1, lh: 2.0, fov: 38 }), ease.inOut);   // push in on the new candidate
@@ -42,7 +43,7 @@ function camKeys() {
   whip(a.tapi - .02, st(ANG.ballot, { r: 30, h: 5.5, lh: 2.2, fov: 46 }), st(ANG.street));
   add(a.oktober - .5, st(ANG.street + 2, { r: 28.4 }));
   // MA: push in on the stamp
-  whip(a.oktober - .05, st(ANG.street + 2), st(ANG.ma, { r: 28, h: 3, lh: 3.2, fov: 46 }));
+  whip(a.oktober - .05, st(ANG.street + 2), st(ANG.ma, { r: 26, h: 3.4, lh: 3.6, fov: 50 }));   // land wide, then push in for the stamp
   add(a.batal - .15, st(ANG.ma - 1, { r: 30.5, h: 2.8, lh: 2.5, fov: 44 }), ease.inOut);
   add(a.kata, st(ANG.ma - 1, { r: 31.2, h: 2.8, lh: 2.5, fov: 43 }), ease.out);
   add(a.bukti, st(ANG.ma - 1.2, { r: 31.4, h: 2.6, lh: 2.3, fov: 42 }), ease.inOut);
@@ -53,13 +54,16 @@ function camKeys() {
   add(a.nov - .6, st(ANG.dpr + 5, { r: 33.5, h: 3, lh: 3.2, fov: 40 }), ease.out);
   // back to the chair: the look target sweeps around the ring (a whip turn), the camera flies in
   add(a.nov + .25, { a: ANG.dpr + 2, r: 22, h: 3.2, la: ANG.dpr - 180, lr: 30, lh: 1.2, fov: 44 }, ease.inOutExpo);
-  add(a.tanpa, { a: ANG.dpr, r: 10, h: 2.5, la: ANG.dpr - 180, lr: 30, lh: 1.4, fov: 40 }, easeX.land);
-  add(a.sekarang - .1, { a: ANG.dpr - 3, r: 10, h: 2.5, la: ANG.dpr - 183, lr: 30, lh: 1.4, fov: 40 });
+  add(a.tanpa, { a: ANG.dpr, r: 6.2, h: 3.6, la: ANG.dpr - 180, lr: 16, lh: .2, fov: 40 }, easeX.land);          // close on the empty seat and the letter
+  add(a.sekarang - .15, { a: ANG.dpr - 2, r: 6.4, h: 3.6, la: ANG.dpr - 182, lr: 16, lh: .2, fov: 40 });
+  add(a.sekarang + .5, { a: ANG.dpr - 70, r: 9, h: 3.2, la: ANG.dpr - 250, lr: 20, lh: 2, fov: 44 }, ease.inOut);  // orbit to the table: the President's letter
+  add(a.dua - .1, { a: ANG.dpr - 72, r: 9.2, h: 3.2, la: ANG.dpr - 252, lr: 20, lh: 2, fov: 44 });
+  add(a.dua + .35, { a: ANG.dpr - 12, r: 11, h: 2.4, la: ANG.dpr - 192, lr: 30, lh: 1.5, fov: 42 }, ease.inOut);
   // two names: slow low orbit
   add(a.satu + .2, { a: ANG.dpr - 14, r: 11, h: 2.4, la: ANG.dpr - 194, lr: 30, lh: 1.5, fov: 42 }, ease.inOut);
   // 96 juta: rise over the hall and look out across the field of voters to the horizon (scale reveal)
   add(a.lama + .1, { a: ANG.dpr - 18, r: 6, h: 46, la: ANG.dpr - 198, lr: 160, lh: 0, fov: 52 }, ease.inOut);
-  add(a.pengganti, { a: ANG.dpr - 20, r: 5, h: 48, la: ANG.dpr - 206, lr: 160, lh: 0, fov: 52 }, ease.lin);
+  add(a.pengganti + .35, { a: ANG.lo, r: -15, h: 25, la: ANG.lo, lr: 9, lh: 0, fov: 52 }, ease.inOut);   // already dropping to the hall
   // 732: tilt down onto the lit seats, then drop outward to LO behind the fence
   add(a.n732 - .1, { a: ANG.lo, r: -14, h: 19, la: ANG.lo, lr: 9, lh: 0, fov: 52 }, ease.inOut);   // seats in view as the count starts
   add(a.lo - .6, { a: ANG.lo, r: -12.5, h: 17.5, la: ANG.lo, lr: 10, lh: 0, fov: 50 }, ease.lin);

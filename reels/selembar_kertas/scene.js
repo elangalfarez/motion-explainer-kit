@@ -1,6 +1,6 @@
 // "Selembar kertas": the VP resignation told as one camera take around a toon-3D ring diorama.
 // Every beat is anchored to a spoken word with T()/E(); the 3D set lives in set.js, the 2D cast in cast2d.js.
-import { W, H, C, clamp, lerp, ease, prog, hash, captions, startToon, rrect } from '../../vendor/toon.js';
+import { W, H, C, clamp, lerp, ease, prog, hash, captions, startToon, rrect, setCaptionMaxChars } from '../../vendor/toon.js';
 import { twos, easeX, arrive, leave, burst, speedLines, paperFinish, slamLine } from '../../vendor/toon2.js';
 import { THREE, initWorld, CAM, renderWorld, proj } from './world3d.js';
 import { anchors } from './anchors.js';
@@ -49,6 +49,7 @@ function updateWorld(t) {
   // voters: rise in a wave on "96 juta" (2nd), sink on "Penggantinya"; seats light on "732"
   updateVoters(prog(t, a.juta2 - .1, a.lama + .3, ease.out), prog(t, a.pengganti, a.n732, ease.in));
   updateSeats(prog(t, a.n732 - .1, a.n732 + .9, ease.out));
+  SET.chair.rotation.z = Math.sin(t * 13) * .05 * Math.exp(-t * 2.2);   // the chair still rocks: he has just stood up
 }
 
 // 2D overlays tied to the world
@@ -87,26 +88,26 @@ function worldMarks(g, t) {
     burst(g, t, a.batal + .13, x, y, 340, C.red, 16);
   }
   // the resignation letter slides onto the MPR table; then the President's letter with two names
-  letter(g, t, a.nov + .25, a.mundur2 - .1, a.sekarang - .2, -.2, 1.5, 'SURAT MUNDUR');
-  letter(g, t, a.sekarang, a.sekarang + .45, a.juta2 - .4, 4.2, 2.6, 'SURAT PRESIDEN');
+  letter(g, t, a.nov + .25, a.tanpa - .1, a.sekarang + .2, [-.4, 3.9, -3.2], [0, 2.25, -.7], 'SURAT MUNDUR');   // from the table onto the empty seat
+  letter(g, t, a.sekarang + .2, a.sekarang + .7, a.dua - .45, [4.2, 3.9, -3.2], [2.2, 3.9, -3.2], 'SURAT PRESIDEN');
   // DPR: 120 raised hands, counter
   if (t > a.lalu - .2 && t < a.nov + .3) {
     const [, y] = proj(...polar(ANG.dpr - 2, 39, 0)), x = W / 2, up = Math.round(120 * prog(tc, a.n120 - .1, a.teken + .5, ease.inOut));
-    const fade = 1 - leave(t, a.hak - .2, .3), base = Math.min(y, 1500);   // the crowd stands on the ground in front of the dome
+    const fade = 1 - leave(t, a.pintu2 - .3, .3), base = Math.min(y, 1500);   // the crowd stands on the ground in front of the dome
     g.save(); g.globalAlpha = fade; crowd(g, x, base - 9 * 52 * .78 - 40, 12, 10, 52, up, 1); g.restore();
     const [dx, dy] = proj(...SET.hmpPos); chip(g, t, a.hak - .05, a.makzul + .2, dx, dy - 160, 'HMP', { size: 64, fill: C.white });
   }
 }
 
-function letter(g, t, t0, t1, tOut, fromX, toX, label) { // a 2D envelope sliding along the table top (world-anchored)
+function letter(g, t, t0, t1, tOut, from, to, label) { // a 2D envelope moving between two world points; its label is a chip below it
   if (t < t0 || t > tOut + .3) return;
-  const k = easeX.land(prog(t, t0, t1, ease.lin)), out = leave(t, tOut, .3), x3 = lerp(fromX, toX, k);
-  const [x, y, , ppu] = proj(x3, 3.9, -3.2), s = ppu / 160;
+  const k = easeX.land(prog(t, t0, t1, ease.lin)), out = leave(t, tOut, .3), p3 = from.map((v, i) => lerp(v, to[i], k));
+  const [x, y, , ppu] = proj(...p3), s = ppu / 160;
   g.save(); g.translate(x, y - out * 80); g.scale(s, s); g.rotate(-.06 + k * .04); g.globalAlpha = 1 - out;
   rrect(g, -95, -60, 190, 120, 8); g.fillStyle = '#FBF7EE'; g.fill(); g.lineWidth = 6; g.strokeStyle = C.ink; g.stroke();
   g.beginPath(); g.moveTo(-95, -60); g.lineTo(0, 8); g.lineTo(95, -60); g.stroke();
-  g.font = `900 22px ${C.font}`; g.fillStyle = C.ink; g.textAlign = 'center'; g.fillText(label, 0, 40);
   g.restore();
+  chip(g, t, t0 + .1, tOut, x, y + 95 * s + 40, label, { size: 44 });
 }
 
 // screen overlay: headlines, counters, labels, captions
@@ -137,7 +138,8 @@ function overlay(g, t) {
     L([a.sembilan - .04, a.sembilan + .2], [['+9', O], ['HARI', W_]], 132),
     L([a.u36 - .3, a.u36 - .04], [['UMUR', W_], ['36', O]], 140),
     L([a.daftar - .04, a.daftar + .14], [['DAFTAR', W_], ['CAWAPRES', O]], 112),
-    N(a.juta1 - .05, a.juta1 + .85, 96214691, 112, { sub: 'SUARA PRABOWO-GIBRAN 2024' }),   // rolls fast, then holds crisp
+    { ...N(a.juta1 - .05, a.juta1 + .85, 96214691, 112, { sub: 'SUARA PRABOWO-GIBRAN 2024' }), t1: a.tapi - .1 },   // rolls fast, then holds crisp
+    L([a.gugat - .04], [['DIGUGAT', O]], 140),
     L([a.oktober - .04, a.oktober + .12, a.oktober + .26], [['30', O], ['OKT', W_], ['2026', W_]], 128),
     { ts: [a.kata - .05], strip: true },
     N(a.n120 - .05, a.teken + .5, 120, 150, { sub: 'ANGGOTA DPR · 8 FRAKSI' }),
@@ -148,11 +150,11 @@ function overlay(g, t) {
     L([a.mpr - .04, a.pilih - .04, a.satu - .04], [['MPR', W_], ['PILIH', W_], ['1', O]], 132),
     N(a.juta2 - .05, a.juta2 + .85, 96214691, 112, { sub: 'SUARA PRABOWO-GIBRAN 2024' }),
     L([a.pengganti - .04], [['PENGGANTINYA?', W_]], 112),
-    N(a.n732 - .05, a.n732 + .7, 732, 170, { col: O, sub: 'ANGGOTA MPR' }),
-    L([a.lo - .04, a.termasuk - .04], [['NGGAK', W_], ['TERMASUK', O]], 120),
+    { ...N(a.n732 - .05, a.n732 + .7, 732, 170, { col: O, sub: 'ANGGOTA MPR' }), t1: a.n732 + 1.1 },   // clears before the camera reaches LO; the caption carries the last line
   ];
+  chip(g, t, -1, a.terakhir - .3, W / 2, HY + 112, 'PERTAMA SEJAK 1956', { size: 46, fill: C.gold });   // a true number on frame 1
   items.forEach((it, k) => {
-    const next = items[k + 1], t1 = Math.min(it.t1 ?? 1e9, next ? next.ts[0] - .24 : 1e9);
+    const next = items[k + 1], t1 = Math.min(it.t1 ?? 1e9, next ? next.ts[0] - .3 : 1e9);
     if (t < it.ts[0] - .05 || (t1 != null && t > t1 + .25)) return;
     if (it.strip) return quoteStrip(g, t, it.ts[0], t1, a.bukti, a.nggak1);
     if (it.counter) { const [t0, tr, to, size, o] = it.counter; return counter(g, t, t0, tr, 0, to, HY, size, '', { ...o, end: t1 }); }
@@ -170,7 +172,7 @@ function quoteStrip(g, t, t0, t1, tLine, tHit) { // the MA's reasoning, paraphra
   rrect(g, -460 + 8, -110 + 9, 920, 220, 22); g.fillStyle = C.ink; g.fill();
   rrect(g, -460, -110, 920, 220, 22); g.fillStyle = C.white; g.fill(); g.lineWidth = 7; g.strokeStyle = C.ink; g.stroke();
   g.textAlign = 'center'; g.textBaseline = 'middle';
-  g.font = `900 40px ${C.font}`; g.fillStyle = '#5C564F'; g.fillText('PUTUSAN MA 742 K/TUN/2026', 0, -62);
+  g.font = `900 36px ${C.font}`; g.fillStyle = '#3A3532'; g.fillText('RINGKASAN PUTUSAN MA 742 K/TUN/2026', 0, -62);   // a summary, not a verbatim quote
   const l1 = arrive(t, tLine - .04, .22, 1.6); if (l1.on) { g.save(); g.translate(0, 2); g.scale(l1.s, l1.s); g.globalAlpha *= l1.a; g.font = `900 52px ${C.font}`; g.fillStyle = C.ink; g.fillText('Bukti ijazah luar negeri:', 0, 0); g.restore(); }
   const v = arrive(t, tHit - .04, .22, 2); if (v.on) { g.save(); g.translate(0, 64); g.scale(v.s, v.s); g.font = `900 56px ${C.font}`; g.fillStyle = C.red; g.fillText('tidak ditemukan', 0, 0); g.restore(); }
   g.restore();
@@ -185,4 +187,4 @@ function draw(g, t) {
   const c0 = camAt(t - 1 / 60), c1 = camAt(t + 1 / 60), dx = Math.hypot(c1.l[0] - c0.l[0], c1.l[2] - c0.l[2]) * 30;
   speedLines(g, t, dx * 90, 0);
 }
-startToon({ build: async () => { initWorld(); buildSet(drawDoc); }, draw, overlay, blurSamples: 1 });   // 2-sample blur read as double outlines (judge r1)
+startToon({ build: async () => { initWorld(); buildSet(drawDoc); setCaptionMaxChars(18); }, draw, overlay, blurSamples: 1 });   // 2-sample blur read as double outlines (judge r1)

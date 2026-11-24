@@ -13,8 +13,8 @@ const at = (aDeg, r) => polar(aDeg, r);
 
 function hookVP(g, t, tc, a) {          // the VP stands by the chair, then walks off on "mundur"
   if (t > a.cerita + .6) return [];
-  const w = prog(t, .35, a.mundur + .7, ease.in), ad = antic(tc, .35, .5), wp = walkPose(tc);   // walking off by 0.5 s
-  const f = figure(g, -1.05 - w * 5, 1.5, 1.4, { ...WAPRES, sq: ad.sq, legL: w > 0 ? wp.legL : 0, legR: w > 0 ? wp.legR : 0, lookX: -.8 * prog(tc, .15, .3), blink: blinkAt(tc, 1), brow: 1, smile: -.2 }, 3);
+  const w = prog(t, -.3, a.mundur + .7, ease.lin), ad = antic(tc, -.3, .5), wp = walkPose(tc);   // mid-stride on frame 1, steady pace
+  const f = figure(g, -1.05 - w * 5, 1.5, 1.4, { ...WAPRES, sq: ad.sq, legL: w > 0 ? wp.legL : 0, legR: w > 0 ? wp.legR : 0, lookX: -.8, blink: blinkAt(tc, 1), brow: 1, smile: -.2 }, 3);
   return [{ f, text: 'WAPRES', t0: .05, t1: a.mundur + .9 }];
 }
 function hatta(g, t, tc, a) {          // the only earlier VP resignation (1956): a faded role figure, no likeness
@@ -27,7 +27,7 @@ function hatta(g, t, tc, a) {          // the only earlier VP resignation (1956)
 }
 function judgeMK(g, t, tc, a) {         // points at the gate on "buka"
   if (t < a.y2023 - .8 || t > a.u36 + .5) return [];
-  const j = at(ANG.mk + .4 - leave(t, a.u36 - .1, .5) * 8, 38.2), point = prog(tc, a.buka - .15, a.buka + .1, ease.out);
+  const j = at(ANG.mk - .6 - leave(t, a.u36 - .1, .5) * 8, 38.2), point = prog(tc, a.buka - .15, a.buka + .1, ease.out);
   const f = figure(g, j[0], 0, j[2], { kind: 'robe', hair: 'short', hairCol: '#9A948C', shirt: C.ink, brow: -.6, smile: .1, lookX: -.7, blink: blinkAt(tc, 2),
     hlx: -30 - point * 70, hly: 95 - point * 140, hrx: 30, hry: 95 }, 5);
   return [{ f, text: 'HAKIM MK', t0: a.mk - .1, t1: a.sembilan + .2 }];
@@ -37,7 +37,7 @@ function walker(g, t, tc, a) {          // WALI KOTA -> CAWAPRES -> WAPRES: thro
   const k = prog(t, a.sembilan - .4, a.daftar + .2, ease.inOut), onBallot = t > a.menang - .1;
   const q = onBallot ? at(ANG.ballot - 2.2, 38.5) : at(ANG.mk - 2.5, lerp(47, 38.6, k));   // out of the court, through the gate, towards us
   const wp = walkPose(tc), moving = !onBallot && k > 0 && k < 1, cheer = onBallot ? prog(tc, a.menang, a.menang + .25, easeX.land) : 0;
-  const text = t < a.daftar ? 'WALI KOTA' : t < a.menang ? 'CAWAPRES' : 'WAPRES', t0 = t < a.daftar ? a.sembilan : t < a.menang ? a.daftar : a.menang;
+  const text = t < a.daftar ? 'WALI KOTA · UMUR 36' : t < a.menang ? 'CAWAPRES' : 'WAPRES', t0 = t < a.daftar ? a.sembilan : t < a.menang ? a.daftar : a.menang;
   const f = figure(g, q[0], 0, q[2], { ...WAPRES, legL: moving ? wp.legL : 0, legR: moving ? wp.legR : 0, lift: moving ? wp.dy / 500 : 0, lookX: 0,
     eyes: cheer > .5 ? 'happy' : 'dot', blink: blinkAt(tc, 3), mouth: cheer * .6, hlx: -30 - cheer * 40, hly: 95 - cheer * 230, hrx: 30 + cheer * 40, hry: 95 - cheer * 230 }, 3);
   return [{ f, text, t0: t0 - .05, t1: a.tapi - .1 }];
@@ -48,7 +48,7 @@ function advokat(g, t, tc, a) {         // walks in holding the paper, raises it
   const f = figure(g, p[0], 0, p[2], { kind: 'suit', hair: 'side', shirt: '#6F6B66', tie: C.ink, legL: k < 1 ? wp.legL : 0, legR: k < 1 ? wp.legR : 0, brow: -1, smile: -.3,
     lookX: .5, blink: blinkAt(tc, 4), hlx: -30, hly: 95, hrx: 40 + raise * 30, hry: 70 - raise * 220 }, 7);
   if (f) heldDoc(g, f, raise);
-  return [{ f, text: 'ADVOKAT', t0: a.advokat - .1, t1: a.oktober }];
+  return [{ f, text: 'ADVOKAT', t0: a.tapi + .05, t1: a.oktober }];
 }
 function heldDoc(g, f, raise) {         // the paper in the advokat's right hand
   const s = f.s, hx = f.x + (40 + raise * 30 + 60) * s, hy = f.y - (195 - (70 - raise * 220)) * s;
@@ -71,7 +71,7 @@ function leavesVP(g, t, tc, a) {        // back in the hall: hand on the table (
 }
 function nominees(g, t, tc, a) {        // two names step up beside the empty chair; the MPR figure's hand hovers between them
   if (t < a.dua - .3 || t > a.juta2 + .6) return [];
-  const s1 = arrive(tc, a.dua - .05, .3, 1.25), s2 = arrive(tc, a.dua + .2, .3, 1.25), out = [];
+  const s1 = arrive(tc, a.dua - .3, .3, 1.25), s2 = arrive(tc, a.dua - .05, .3, 1.25), out = [];
   if (s1.on) out.push({ f: figure(g, -1.55, 1.5, .7, { kind: 'suit', hair: 'short', shirt: '#5C564F', tie: '#5E8C6A', s: s1.s, lookX: .4, blink: blinkAt(tc, 8), smile: .3 }, 11), text: 'MENTAN', t0: a.dua, t1: a.juta2, size: 34 });
   if (s2.on) out.push({ f: figure(g, 1.55, 1.5, .7, { kind: 'suit', hair: 'short', hairCol: '#3A2E28', shirt: '#2E3A59', tie: C.gold, s: s2.s, lookX: -.4, blink: blinkAt(tc, 9), smile: .3 }, 12), text: 'MENKO PMK', t0: a.dua + .25, t1: a.juta2, size: 34 });
   const sw = Math.sin((tc - a.pilih) * 5) * prog(tc, a.pilih - .2, a.pilih + .1), up = prog(tc, a.pilih - .2, a.pilih);
@@ -82,7 +82,8 @@ function nominees(g, t, tc, a) {        // two names step up beside the empty ch
 function lo(g, t, tc, a) {              // LO outside the fence, hands on the rail
   if (t < a.n732 + .4) return [];
   const p = at(ANG.lo, 24.4);
-  const f = figure(g, p[0], 0, p[2], { shirt: C.orange, hair: 'side', eyes: t > a.termasuk ? 'wide' : 'dot', blink: blinkAt(tc, 14), brow: 1, smile: -.4, lookY: -.2,
+  const f = figure(g, p[0], 0, p[2], { shirt: C.white, hair: 'side',   // white: an orange shirt vanished into the lit seats
+    eyes: t > a.termasuk ? 'wide' : 'dot', blink: blinkAt(tc, 14), brow: 1, smile: -.4, lookY: -.2,
     hlx: -60, hly: 60, hrx: 60, hry: 60 }, 14);
   if (f) rails(g);
   return [{ f, text: 'LO', t0: a.lo - .05, t1: null }];

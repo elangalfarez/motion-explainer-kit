@@ -24,7 +24,8 @@ export const spring = (t, t0, f = 2.2, d = 5) => t < t0 ? 0 : 1 - Math.exp(-d * 
 export const wobble = (t, t0, amp = 1, f = 2.2, d = 4) => t < t0 ? 0 : amp * Math.exp(-d * (t - t0)) * Math.sin(f * 2 * Math.PI * (t - t0));
 
 // ---------- words / voice ----------
-let WORDS = [], DUR = 30, ENV = [], EFPS = 60, CHUNKS = [];
+let WORDS = [], DUR = 30, ENV = [], EFPS = 60, CHUNKS = [], CHUNK_CHARS = Infinity;
+export const setCaptionMaxChars = n => { CHUNK_CHARS = n; if (WORDS.length) buildChunks(); };
 const clean = w => w.toLowerCase().replace(/[^\w°]/g, '');
 export function T(word, n = 1) { let k = 0; for (const w of WORDS) if (clean(w.w) === clean(word) && ++k === n) return w.s; console.warn('word not found', word, n); return 0; }
 export function E(word, n = 1) { let k = 0; for (const w of WORDS) if (clean(w.w) === clean(word) && ++k === n) return w.e; return 0; }
@@ -222,7 +223,8 @@ export function popLine(g, t, t0, parts, y, size, o = {}) {
 function buildChunks() {
   CHUNKS = []; let cur = [];
   WORDS.forEach((w, i) => { cur.push(w); const n = WORDS[i + 1];
-    if (!n || n.p !== w.p || /[,.!?:]$/.test(w.w) || cur.length >= 3 || n.s - w.e > .35) { CHUNKS.push(cur); cur = []; } });
+    const len = cur.map(x => x.w).join(' ').length + (n ? n.w.length + 1 : 0);
+    if (!n || n.p !== w.p || /[,.!?:]$/.test(w.w) || cur.length >= 3 || n.s - w.e > .35 || len > CHUNK_CHARS) { CHUNKS.push(cur); cur = []; } });
 }
 export function captions(g, t, o = {}) {
   const y = o.y ?? 1700, size = o.size ?? 66; let c = null;
